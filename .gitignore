@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archives
+*.tar.gz
+*.zip
+*.gz
+*.tgz
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
