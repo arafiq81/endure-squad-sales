@@ -14,3 +14,7 @@
 
 # Node
 node_modules/
+
+# Source/upload staging
+files/
+files.zip
