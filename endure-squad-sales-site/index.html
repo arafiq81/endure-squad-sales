@@ -254,108 +254,45 @@ body::before {
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Hero visual — mock dashboard */
+/* Hero visual — screenshot stack */
 .hero-visual {
   position: relative;
   animation: float 6s ease-in-out infinite;
 }
-.mock-dashboard {
-  background: var(--card);
-  border: 1px solid var(--border);
+.screenshot-stack {
+  position: relative;
+  max-width: 520px;
+}
+.screenshot {
+  width: 100%;
   border-radius: 12px;
-  overflow: hidden;
+  border: 1px solid var(--border);
   box-shadow: 0 24px 80px rgba(0,0,0,0.4);
 }
-.mock-titlebar {
-  height: 36px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  gap: 8px;
+.screenshot.main {
+  position: relative;
+  z-index: 2;
 }
-.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
-.mock-dot.r { background: #EF4444; }
-.mock-dot.y { background: #EAB308; }
-.mock-dot.g { background: #22C55E; }
-.mock-url {
-  flex: 1;
-  text-align: center;
-  font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--muted);
+.screenshot.secondary {
+  position: absolute;
+  bottom: -20px;
+  right: -30px;
+  width: 55%;
+  z-index: 3;
+  border: 2px solid var(--border-hover);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
 }
-.mock-body {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+
+@media (max-width: 768px) {
+  .screenshot.secondary {
+    position: relative;
+    bottom: -12px;
+    right: 0;
+    width: 80%;
+    margin-left: auto;
+    margin-top: -40px;
+  }
 }
-.mock-card {
-  background: var(--surface);
-  border-radius: 8px;
-  padding: 16px;
-  border: 1px solid var(--border);
-}
-.mock-card-label {
-  font-size: 11px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-}
-.mock-card-value {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--heading);
-}
-.mock-card-value.blue { color: var(--accent); }
-.mock-card-value.green { color: var(--success); }
-.mock-bar-row {
-  display: flex;
-  gap: 4px;
-  align-items: flex-end;
-  height: 40px;
-  margin-top: 8px;
-}
-.mock-bar {
-  flex: 1;
-  background: var(--accent);
-  border-radius: 3px 3px 0 0;
-  opacity: 0.7;
-}
-.mock-bar:nth-child(odd) { opacity: 0.4; }
-.mock-athlete-list { grid-column: 1 / -1; }
-.mock-athlete-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.mock-athlete-row:last-child { border: none; }
-.mock-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-}
-.mock-athlete-name { font-size: 14px; color: var(--heading); flex: 1; }
-.mock-status {
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 100px;
-  font-weight: 500;
-}
-.mock-status.active { background: rgba(34,197,94,0.12); color: var(--success); }
-.mock-status.pending { background: rgba(232,119,34,0.12); color: var(--warning); }
 
 /* ——— PAIN SECTION ——— */
 .pain {
@@ -839,50 +776,9 @@ body::before {
         </div>
       </div>
       <div class="hero-visual animate-in delay-4">
-        <div class="mock-dashboard">
-          <div class="mock-titlebar">
-            <div class="mock-dot r"></div>
-            <div class="mock-dot y"></div>
-            <div class="mock-dot g"></div>
-            <div class="mock-url">app.enduresquad.com/dashboard</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-card">
-              <div class="mock-card-label">Active Athletes</div>
-              <div class="mock-card-value blue">12</div>
-            </div>
-            <div class="mock-card">
-              <div class="mock-card-label">Plan Completion</div>
-              <div class="mock-card-value green">87%</div>
-              <div class="mock-bar-row">
-                <div class="mock-bar" style="height:60%"></div>
-                <div class="mock-bar" style="height:75%"></div>
-                <div class="mock-bar" style="height:45%"></div>
-                <div class="mock-bar" style="height:90%"></div>
-                <div class="mock-bar" style="height:80%"></div>
-                <div class="mock-bar" style="height:65%"></div>
-                <div class="mock-bar" style="height:95%"></div>
-              </div>
-            </div>
-            <div class="mock-card mock-athlete-list">
-              <div class="mock-card-label">Recent Activity</div>
-              <div class="mock-athlete-row">
-                <div class="mock-avatar">AK</div>
-                <div class="mock-athlete-name">Ahmed K.</div>
-                <div class="mock-status active">Completed</div>
-              </div>
-              <div class="mock-athlete-row">
-                <div class="mock-avatar">SF</div>
-                <div class="mock-athlete-name">Sara F.</div>
-                <div class="mock-status pending">In Progress</div>
-              </div>
-              <div class="mock-athlete-row">
-                <div class="mock-avatar">RJ</div>
-                <div class="mock-athlete-name">Rizwan J.</div>
-                <div class="mock-status active">Completed</div>
-              </div>
-            </div>
-          </div>
+        <div class="screenshot-stack">
+          <img src="./screenshots/dashboard.png" alt="Coach dashboard showing athlete overview and training analytics" class="screenshot main" loading="lazy">
+          <img src="./screenshots/plan-builder.png" alt="Drag and drop training plan builder" class="screenshot secondary" loading="lazy">
         </div>
       </div>
     </div>
