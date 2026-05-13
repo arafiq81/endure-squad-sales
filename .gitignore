@@ -18,3 +18,5 @@ node_modules/
 # Source/upload staging
 files/
 files.zip
+v3/
+v3.zip

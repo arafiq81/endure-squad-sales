@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Endure Squad Coach — Manage More Clients in Less Time</title>
-<meta name="description" content="The training platform that cuts your admin time in half. Build plans, track client progress, and scale your coaching business — without the spreadsheet chaos.">
-<meta property="og:title" content="Endure Squad Coach — Manage More Clients in Less Time">
-<meta property="og:description" content="Cut admin time in half. Build training plans, track client progress, automate follow-ups — and actually scale your coaching business.">
+<title>Endure Squad Coach — Training Plan Software for Independent Coaches</title>
+<meta name="description" content="Build training plans, track client progress, and get smart coaching insights — all in one platform. Replace spreadsheets and WhatsApp in 5 minutes.">
+<meta property="og:title" content="Endure Squad Coach — Replace Spreadsheets. Manage Clients. Coach Better.">
+<meta property="og:description" content="Training plan software for independent coaches. Build plans, track progress, get smart insights. Free for 30 days.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://get.enduresquad.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,47 +34,24 @@
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--body);
-  line-height: 1.7;
-  font-size: 16px;
-  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg); color: var(--body);
+  line-height: 1.7; font-size: 16px; overflow-x: hidden;
 }
-
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
+  content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
 }
-
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
 /* ——— ANIMATIONS ——— */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px var(--accent-glow), 0 0 60px rgba(59,130,246,0.08); }
-  50% { box-shadow: 0 0 30px var(--accent-glow), 0 0 80px rgba(59,130,246,0.12); }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-up { animation: fadeUp 0.7s ease-out both; }
-.animate-in { animation: fadeIn 0.6s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.animate-up { animation: fadeUp 0.6s ease-out both; }
+.animate-in { animation: fadeIn 0.5s ease-out both; }
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
@@ -82,829 +59,658 @@ body::before {
 
 /* ——— TOP BAR ——— */
 .topbar {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 64px;
-  background: rgba(13, 17, 23, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px;
+  position: fixed; top: 0; left: 0; right: 0; height: 56px;
+  background: rgba(13,17,23,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
 }
 .topbar-logo {
-  font-weight: 700; font-size: 18px; color: var(--heading);
-  letter-spacing: -0.02em;
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none;
+  font-weight: 700; font-size: 16px; color: var(--heading);
+  letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; text-decoration: none;
 }
 .topbar-logo .logo-mark {
-  width: 32px; height: 32px;
-  background: var(--accent); border-radius: 8px;
+  width: 28px; height: 28px; background: var(--accent); border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 800; color: #fff; letter-spacing: 0.05em;
+  font-size: 12px; font-weight: 800; color: #fff;
 }
+.topbar-links {
+  display: flex; align-items: center; gap: 24px;
+}
+.topbar-link {
+  font-size: 13px; font-weight: 500; color: var(--body);
+  text-decoration: none; transition: color 0.2s;
+}
+.topbar-link:hover { color: var(--heading); }
 .topbar-cta {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 6px;
   background: var(--accent); color: #fff;
-  padding: 8px 20px; border-radius: 6px;
-  font-size: 14px; font-weight: 600;
-  text-decoration: none;
+  padding: 7px 18px; border-radius: 6px;
+  font-size: 13px; font-weight: 600; text-decoration: none;
   transition: background 0.2s, transform 0.2s;
 }
 .topbar-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-/* ——— HERO ——— */
-.hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding-top: 64px;
-  position: relative;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: -200px; right: -300px;
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center; width: 100%;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(59,130,246,0.2);
-  padding: 6px 16px; border-radius: 100px;
-  font-size: 13px; font-weight: 500; color: var(--accent);
-  margin-bottom: 24px; letter-spacing: 0.02em;
-}
-.hero-badge .dot {
-  width: 6px; height: 6px;
-  background: var(--success); border-radius: 50%;
-  animation: pulseGlow 2s infinite;
-}
-.hero h1 {
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 800; color: var(--heading);
-  line-height: 1.1; letter-spacing: -0.03em;
-  margin-bottom: 20px;
-}
-.hero h1 .line-accent {
-  background: linear-gradient(135deg, var(--accent), #60a5fa);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: 18px; color: var(--body);
-  max-width: 480px; margin-bottom: 36px; line-height: 1.7;
-}
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-
+/* ——— BUTTONS ——— */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--accent); color: #fff;
-  padding: 14px 32px; border-radius: 6px;
-  font-size: 16px; font-weight: 600;
-  text-decoration: none; transition: all 0.25s;
-  border: none; cursor: pointer; font-family: inherit;
+  padding: 14px 28px; border-radius: 6px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: all 0.25s; border: none; cursor: pointer; font-family: inherit;
 }
 .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
-.btn-secondary {
+.btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: var(--heading);
-  padding: 14px 32px; border-radius: 6px;
-  font-size: 16px; font-weight: 500;
-  text-decoration: none;
-  border: 1px solid var(--border-hover);
-  transition: all 0.25s;
+  background: transparent; color: var(--body);
+  padding: 14px 28px; border-radius: 6px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  border: 1px solid var(--border-hover); transition: all 0.25s;
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm {
+  padding: 10px 20px; font-size: 13px;
+}
+.arrow-icon { width: 14px; height: 14px; }
 
-/* Hero visual — screenshot placeholder */
-.hero-visual {
-  position: relative;
+/* ——— HERO ——— */
+.hero {
+  padding: 140px 0 100px; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; top: -100px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-center { text-align: center; max-width: 720px; margin: 0 auto; }
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  margin-bottom: 20px; letter-spacing: 0.02em;
+}
+.hero-label .pipe { color: var(--border-hover); }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 800;
+  color: var(--heading); line-height: 1.1;
+  letter-spacing: -0.03em; margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 18px; color: var(--body);
+  max-width: 540px; margin: 0 auto 32px; line-height: 1.65;
+}
+.hero-sub strong { color: var(--heading); font-weight: 600; }
+.hero-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.hero-note {
+  font-size: 13px; color: var(--muted); margin-top: 8px;
+}
+
+/* Hero screenshot */
+.hero-screenshot {
+  margin-top: 56px; position: relative;
+  max-width: 900px; margin-left: auto; margin-right: auto;
   animation: float 6s ease-in-out infinite;
 }
-.screenshot-stack { position: relative; max-width: 520px; }
-.screenshot-main {
-  width: 100%;
-  border-radius: 12px;
+.hero-screenshot img {
+  width: 100%; border-radius: 12px;
   border: 1px solid var(--border);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-  position: relative; z-index: 2;
-  display: block;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
 }
-.screenshot-secondary {
-  position: absolute;
-  bottom: -24px; right: -36px;
-  width: 50%;
-  border-radius: 10px;
+.hero-screenshot .secondary {
+  position: absolute; bottom: -20px; right: -20px;
+  width: 35%; border-radius: 10px;
   border: 2px solid var(--border-hover);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-  z-index: 3;
-  display: block;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* ——— SOCIAL PROOF BAR ——— */
+.proof-bar {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+.proof-bar-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.proof-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--body);
+}
+.proof-item .check {
+  color: var(--success); font-weight: 700; font-size: 16px;
 }
 
 /* ——— SECTION SHARED ——— */
 .section-label {
   font-size: 12px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;
+  letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px;
 }
 .section-title {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 700; color: var(--heading);
-  line-height: 1.15; letter-spacing: -0.02em;
-  margin-bottom: 24px;
+  font-size: clamp(26px, 3.5vw, 38px); font-weight: 700;
+  color: var(--heading); line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 16px;
 }
 .section-desc {
-  font-size: 17px; color: var(--body);
-  max-width: 580px; margin-bottom: 48px;
+  font-size: 16px; color: var(--body);
+  max-width: 560px; margin-bottom: 40px; line-height: 1.65;
 }
 
-/* ——— THE PROBLEM (replaces pain) ——— */
-.problem { padding: 120px 0; }
-.problem-grid {
+/* ——— KILL EXCEL SECTION ——— */
+.kill-excel { padding: 100px 0; }
+.kill-excel-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 48px; align-items: start;
 }
-.problem-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px 24px;
-  transition: all 0.3s;
-  position: relative; overflow: hidden;
+.excel-problems { display: flex; flex-direction: column; gap: 16px; }
+.excel-problem {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 20px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 8px;
+  transition: border-color 0.2s;
 }
-.problem-card::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: var(--error); opacity: 0.6;
+.excel-problem:hover { border-color: var(--border-hover); }
+.excel-x {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(239,68,68,0.1); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--error); font-size: 14px; font-weight: 700;
 }
-.problem-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-.problem-card .time-cost {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 600;
-  color: var(--warning); margin-top: 14px;
-  background: rgba(232,119,34,0.1);
-  padding: 4px 10px; border-radius: 4px;
-}
-.problem-card h3 {
-  font-size: 16px; font-weight: 600; color: var(--heading); margin-bottom: 8px;
-}
-.problem-card p {
-  font-size: 14px; color: var(--body); line-height: 1.6;
-}
+.excel-problem h4 { font-size: 15px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+.excel-problem p { font-size: 13px; color: var(--body); line-height: 1.5; }
 
-/* ——— OUTCOME STRIP ——— */
-.outcomes {
-  padding: 80px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+.solution-list { display: flex; flex-direction: column; gap: 16px; }
+.solution-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 20px; background: var(--card);
+  border: 1px solid rgba(34,197,94,0.15); border-radius: 8px;
 }
-.outcome-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.solution-check {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(34,197,94,0.1); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--success); font-size: 14px; font-weight: 700;
 }
-.outcome-card {
-  text-align: center; padding: 24px 16px;
-}
-.outcome-number {
-  font-size: 40px; font-weight: 800; color: var(--heading);
-  line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px;
-}
-.outcome-number .accent { color: var(--accent); }
-.outcome-label {
-  font-size: 14px; color: var(--body); line-height: 1.5;
-}
+.solution-item h4 { font-size: 15px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+.solution-item p { font-size: 13px; color: var(--body); line-height: 1.5; }
 
-/* ——— ANALYTICS SHOWCASE (hero feature) ——— */
-.analytics {
-  padding: 120px 0;
+/* ——— HOW IT WORKS (3-step flow) ——— */
+.how { padding: 100px 0; }
+.flow-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 40px;
+}
+.flow-step {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 28px 24px;
   position: relative;
 }
+.flow-step-num {
+  font-size: 40px; font-weight: 800; color: rgba(59,130,246,0.15);
+  font-family: 'JetBrains Mono', monospace;
+  position: absolute; top: 16px; right: 20px;
+}
+.flow-step h3 { font-size: 17px; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
+.flow-step p { font-size: 14px; color: var(--body); line-height: 1.6; }
+.flow-step .flow-result {
+  margin-top: 14px; font-size: 13px; font-weight: 500; color: var(--success);
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ——— ANALYTICS SHOWCASE ——— */
+.analytics { padding: 100px 0; position: relative; }
 .analytics::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(59,130,246,0.03) 0%, transparent 40%, transparent 60%, rgba(59,130,246,0.03) 100%);
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(59,130,246,0.02) 0%, transparent 30%, transparent 70%, rgba(59,130,246,0.02) 100%);
   pointer-events: none;
 }
-.analytics-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
+.analytics-header { text-align: center; margin-bottom: 56px; }
 .analytics-header .section-label,
 .analytics-header .section-title,
-.analytics-header .section-desc {
-  text-align: center;
-}
-.analytics-header .section-desc {
-  max-width: 620px;
-  margin-left: auto; margin-right: auto;
-}
+.analytics-header .section-desc { text-align: center; }
+.analytics-header .section-desc { max-width: 600px; margin-left: auto; margin-right: auto; }
 
-/* Analytics showcase layout */
 .analytics-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 28px; align-items: start;
 }
-.analytics-left, .analytics-right {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+.analytics-left, .analytics-right { display: flex; flex-direction: column; gap: 16px; }
 
-/* Mock UI cards */
 .mock-ui {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
 }
 .mock-ui:hover { border-color: var(--border-hover); }
 .mock-ui-header {
-  padding: 16px 20px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
+  padding: 14px 18px 10px; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); border-bottom: 1px solid var(--border);
 }
-.mock-ui-body { padding: 20px; }
+.mock-ui-body { padding: 16px 18px; }
 
-/* Stat row */
-.mock-stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 4px;
-}
+.mock-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .mock-stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 10px;
 }
 .mock-stat-icon {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 11px; color: var(--muted); margin-bottom: 2px;
+  display: flex; align-items: center; gap: 6px;
 }
-.mock-stat-trend {
-  font-size: 11px;
-  font-weight: 600;
-  margin-left: auto;
-}
+.mock-stat-trend { font-size: 11px; font-weight: 600; margin-left: auto; }
 .mock-stat-trend.up { color: var(--success); }
 .mock-stat-trend.down { color: var(--error); }
-.mock-stat-value {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--heading);
-  line-height: 1.2;
-}
-.mock-stat-label {
-  font-size: 11px;
-  color: var(--muted);
-}
+.mock-stat-value { font-size: 20px; font-weight: 700; color: var(--heading); line-height: 1.2; }
+.mock-stat-label { font-size: 10px; color: var(--muted); }
 
-/* Volume chart mock */
-.mock-chart {
-  margin-top: 16px;
-}
+.mock-chart { margin-top: 12px; }
 .mock-chart-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 12px;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px;
 }
-.mock-chart svg {
-  width: 100%;
-  height: auto;
-}
+.mock-chart svg { width: 100%; height: auto; }
 
-/* Needs attention section */
-.mock-alerts {}
 .mock-alert {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border: 1px solid;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1px solid; border-radius: 6px; margin-bottom: 8px;
 }
 .mock-alert:last-child { margin-bottom: 0; }
-.mock-alert.warning {
-  border-color: rgba(232,119,34,0.3);
-  background: rgba(232,119,34,0.06);
-}
-.mock-alert.danger {
-  border-color: rgba(239,68,68,0.3);
-  background: rgba(239,68,68,0.06);
-}
-.mock-alert-icon { font-size: 18px; flex-shrink: 0; }
+.mock-alert.warning { border-color: rgba(232,119,34,0.3); background: rgba(232,119,34,0.06); }
+.mock-alert.danger { border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.06); }
 .mock-alert-content { flex: 1; }
-.mock-alert-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--heading);
-}
-.mock-alert-detail {
-  font-size: 12px;
-  color: var(--warning);
-}
+.mock-alert-name { font-size: 14px; font-weight: 600; color: var(--heading); }
+.mock-alert-detail { font-size: 12px; color: var(--warning); }
 .mock-alert.danger .mock-alert-detail { color: var(--error); }
 .mock-alert-badge {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 100px;
-  flex-shrink: 0;
+  font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 100px; flex-shrink: 0;
 }
-.mock-alert.warning .mock-alert-badge {
-  background: rgba(232,119,34,0.15);
-  color: var(--warning);
-}
-.mock-alert.danger .mock-alert-badge {
-  background: rgba(239,68,68,0.15);
-  color: var(--error);
-}
+.mock-alert.warning .mock-alert-badge { background: rgba(232,119,34,0.15); color: var(--warning); }
+.mock-alert.danger .mock-alert-badge { background: rgba(239,68,68,0.15); color: var(--error); }
 
-/* Recommendation cards */
 .mock-rec {
-  padding: 14px 16px;
-  border-left: 3px solid;
-  border-radius: 0 6px 6px 0;
-  background: var(--surface);
-  margin-bottom: 10px;
+  padding: 14px 16px; border-left: 3px solid;
+  border-radius: 0 6px 6px 0; background: var(--surface); margin-bottom: 8px;
 }
 .mock-rec:last-child { margin-bottom: 0; }
 .mock-rec.rec-warning { border-left-color: var(--warning); }
 .mock-rec.rec-info { border-left-color: var(--accent); }
 .mock-rec.rec-success { border-left-color: var(--success); }
-.mock-rec-exercise {
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 2px;
-}
-.mock-rec-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--heading);
-  margin-bottom: 4px;
-}
-.mock-rec-desc {
-  font-size: 13px;
-  color: var(--body);
-  line-height: 1.5;
-}
+.mock-rec-exercise { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.mock-rec-title { font-size: 14px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+.mock-rec-desc { font-size: 13px; color: var(--body); line-height: 1.5; }
 .mock-rec-data {
-  margin-top: 8px;
-  font-size: 11px;
-  color: var(--muted);
+  margin-top: 6px; font-size: 11px; color: var(--muted);
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Activity heatmap mock */
-.mock-heatmap {
-  margin-top: 16px;
+.mock-exercise-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
 }
-.mock-heatmap-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin-bottom: 10px;
+.mock-exercise-row:last-child { border: none; }
+.mock-exercise-icon { font-size: 14px; color: var(--muted); }
+.mock-exercise-info { flex: 1; }
+.mock-exercise-name { font-size: 13px; color: var(--heading); font-weight: 500; }
+.mock-exercise-meta { font-size: 11px; color: var(--muted); }
+.mock-exercise-status {
+  font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
 }
-.heatmap-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 3px;
-}
-.heatmap-day-label {
-  font-size: 10px;
-  color: var(--muted);
-  text-align: center;
-  padding-bottom: 4px;
-}
+.mock-exercise-status.plateau { color: var(--warning); background: rgba(232,119,34,0.1); }
+.mock-exercise-status.declining { color: var(--error); background: rgba(239,68,68,0.1); }
+
+.heatmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.heatmap-day-label { font-size: 9px; color: var(--muted); text-align: center; padding-bottom: 3px; }
 .heatmap-cell {
-  aspect-ratio: 1;
-  border-radius: 2px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  aspect-ratio: 1; border-radius: 2px;
+  background: var(--surface); border: 1px solid var(--border);
 }
 .heatmap-cell.l1 { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.2); }
 .heatmap-cell.l2 { background: rgba(59,130,246,0.35); border-color: rgba(59,130,246,0.4); }
 .heatmap-cell.l3 { background: rgba(59,130,246,0.6); border-color: rgba(59,130,246,0.65); }
 
-/* Exercise progress */
-.mock-exercise-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.mock-exercise-row:last-child { border: none; }
-.mock-exercise-icon { font-size: 14px; color: var(--muted); }
-.mock-exercise-info { flex: 1; }
-.mock-exercise-name { font-size: 14px; color: var(--heading); font-weight: 500; }
-.mock-exercise-meta { font-size: 11px; color: var(--muted); }
-.mock-exercise-status {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-.mock-exercise-status.plateau { color: var(--warning); background: rgba(232,119,34,0.1); }
-.mock-exercise-status.declining { color: var(--error); background: rgba(239,68,68,0.1); }
-.mock-exercise-status.improving { color: var(--success); background: rgba(34,197,94,0.1); }
+.analytics-cta { text-align: center; margin-top: 48px; }
+.analytics-caption { font-size: 15px; color: var(--body); margin-bottom: 20px; }
+.analytics-caption strong { color: var(--heading); font-weight: 600; }
 
-/* Analytics CTA */
-.analytics-cta {
-  text-align: center;
-  margin-top: 48px;
-}
-.analytics-caption {
-  font-size: 15px;
-  color: var(--body);
-  margin-bottom: 20px;
-}
-.analytics-caption strong {
-  color: var(--heading);
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .analytics-showcase { grid-template-columns: 1fr; }
-  .mock-stats-row { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ——— FEATURES (reframed as business outcomes) ——— */
-.features { padding: 120px 0; }
-.features-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
+/* ——— FEATURES GRID ——— */
+.features { padding: 100px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .feature-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 32px 28px;
-  transition: all 0.3s;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 24px 20px; transition: all 0.3s;
 }
-.feature-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-2px); }
-.feature-card.highlight {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(59,130,246,0.06), transparent);
-  border-color: rgba(59,130,246,0.2);
-}
-.feature-icon {
-  width: 44px; height: 44px;
-  background: var(--accent-soft); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; margin-bottom: 20px;
-}
-.feature-card h3 { font-size: 18px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
-.feature-outcome {
-  font-size: 13px; font-weight: 500; color: var(--success);
-  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
-}
-.feature-card p { font-size: 15px; color: var(--body); line-height: 1.6; }
+.feature-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.feature-card .f-icon { font-size: 24px; margin-bottom: 14px; }
+.feature-card h3 { font-size: 15px; font-weight: 600; color: var(--heading); margin-bottom: 6px; }
+.feature-card p { font-size: 13px; color: var(--body); line-height: 1.55; }
 .feature-tag {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.08em; color: var(--accent);
-  background: var(--accent-soft);
-  padding: 4px 10px; border-radius: 4px; margin-top: 16px;
+  display: inline-flex; font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--accent); background: var(--accent-soft);
+  padding: 3px 8px; border-radius: 3px; margin-top: 10px;
 }
 
-/* ——— WHO IT'S FOR ——— */
-.who { padding: 120px 0; }
-.who-grid {
+/* ——— USE CASES ——— */
+.use-cases { padding: 100px 0; }
+.use-case-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 20px; margin-top: 48px;
+  gap: 20px; margin-top: 40px;
 }
-.who-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px 24px;
-  transition: all 0.3s;
+.use-case-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 28px 24px; transition: all 0.3s;
 }
-.who-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-.who-card .who-icon { font-size: 32px; margin-bottom: 16px; }
-.who-card h3 { font-size: 16px; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
-.who-card p { font-size: 14px; color: var(--body); line-height: 1.6; }
-.who-card .who-use {
-  margin-top: 14px; font-size: 13px; color: var(--muted);
-  font-style: italic;
+.use-case-card:hover { border-color: rgba(59,130,246,0.25); }
+.use-case-card .uc-icon { font-size: 28px; margin-bottom: 14px; }
+.use-case-card h3 { font-size: 17px; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
+.use-case-card p { font-size: 14px; color: var(--body); line-height: 1.6; margin-bottom: 16px; }
+.use-case-card .uc-tasks {
+  list-style: none; display: flex; flex-direction: column; gap: 6px;
 }
-
-/* ——— HOW IT WORKS ——— */
-.how { padding: 120px 0; }
-.steps {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; margin-top: 48px;
+.use-case-card .uc-tasks li {
+  font-size: 13px; color: var(--body); display: flex; align-items: center; gap: 8px;
 }
-.step { text-align: center; padding: 32px 24px; }
-.step-number {
-  width: 56px; height: 56px;
-  background: var(--accent-soft);
-  border: 2px solid rgba(59,130,246,0.3);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; font-weight: 700; color: var(--accent);
-  margin: 0 auto 20px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.step h3 { font-size: 18px; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
-.step p { font-size: 14px; color: var(--body); line-height: 1.6; }
+.use-case-card .uc-tasks li .li-check { color: var(--success); font-weight: 700; font-size: 13px; }
 
 /* ——— COMPARISON ——— */
-.comparison { padding: 120px 0; }
+.comparison { padding: 100px 0; }
 .comparison-table {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden; margin-top: 48px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; margin-top: 40px;
 }
 .comp-header {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 24px;
-  font-size: 13px; font-weight: 600; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.06em;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 14px 20px; font-size: 12px; font-weight: 600;
+  color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;
 }
 .comp-header .es-col { color: var(--accent); }
 .comp-row {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px; align-items: center;
+  padding: 12px 20px; border-bottom: 1px solid var(--border);
+  font-size: 13px; align-items: center;
 }
 .comp-row:last-child { border: none; }
 .comp-row .feature-name { color: var(--heading); font-weight: 500; }
-.comp-check { color: var(--success); font-size: 18px; font-weight: 700; }
-.comp-x { color: var(--muted); font-size: 14px; }
-.comp-partial { color: var(--warning); font-size: 13px; }
-.comp-price { font-size: 12px; color: var(--muted); }
+.comp-check { color: var(--success); font-weight: 700; }
+.comp-x { color: var(--muted); }
+.comp-partial { color: var(--warning); font-size: 12px; }
 
 /* ——— OFFER ——— */
-.offer { padding: 120px 0; }
+.offer { padding: 100px 0; }
 .offer-card {
-  max-width: 560px; margin: 0 auto;
-  background: var(--card);
-  border: 1px solid rgba(59,130,246,0.25);
-  border-radius: 12px;
-  padding: 48px 40px; text-align: center;
+  max-width: 520px; margin: 0 auto;
+  background: var(--card); border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 12px; padding: 40px 36px; text-align: center;
   position: relative; overflow: hidden;
 }
 .offer-card::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, var(--accent), #60a5fa, var(--accent));
 }
 .offer-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(34,197,94,0.12); color: var(--success);
-  padding: 6px 16px; border-radius: 100px;
-  font-size: 13px; font-weight: 600;
-  margin-bottom: 24px; letter-spacing: 0.02em;
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 600; margin-bottom: 20px;
 }
-.offer-card h3 { font-size: 28px; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
-.offer-card .price { font-size: 48px; font-weight: 800; color: var(--heading); margin-bottom: 4px; }
-.offer-card .price-note { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
-.offer-perks { list-style: none; text-align: left; margin-bottom: 36px; }
+.offer-card h3 { font-size: 24px; font-weight: 700; color: var(--heading); margin-bottom: 8px; }
+.offer-card .price { font-size: 44px; font-weight: 800; color: var(--heading); margin-bottom: 4px; }
+.offer-card .price-note { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+.offer-perks { list-style: none; text-align: left; margin-bottom: 28px; }
 .offer-perks li {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 15px; color: var(--body);
-  display: flex; align-items: center; gap: 12px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 14px; color: var(--body);
+  display: flex; align-items: center; gap: 10px;
 }
 .offer-perks li:last-child { border: none; }
-.offer-perks .perk-check { color: var(--success); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.offer-perks .perk-check { color: var(--success); font-weight: 700; flex-shrink: 0; }
 
 /* ——— FINAL CTA ——— */
 .final-cta {
-  padding: 120px 0 140px;
-  text-align: center; position: relative;
+  padding: 100px 0 120px; text-align: center; position: relative;
 }
 .final-cta::before {
-  content: ''; position: absolute;
-  bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 400px;
-  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 500px; height: 300px;
+  background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 .final-cta h2 {
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 800; color: var(--heading);
-  line-height: 1.1; letter-spacing: -0.03em;
-  margin-bottom: 16px;
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 800;
+  color: var(--heading); line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 16px;
 }
 .final-cta p {
-  font-size: 18px; color: var(--body);
-  margin-bottom: 36px; max-width: 500px;
+  font-size: 17px; color: var(--body);
+  margin-bottom: 32px; max-width: 480px;
   margin-left: auto; margin-right: auto;
 }
 
 /* ——— FOOTER ——— */
 .footer {
-  padding: 40px 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 13px; color: var(--muted);
+  padding: 32px 0; border-top: 1px solid var(--border);
+  text-align: center; font-size: 12px; color: var(--muted);
 }
 .footer a { color: var(--body); text-decoration: none; }
 .footer a:hover { color: var(--accent); }
 
 /* ——— RESPONSIVE ——— */
 @media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-  .hero-sub { margin-left: auto; margin-right: auto; }
-  .hero-actions { justify-content: center; }
-  .hero-visual { max-width: 400px; margin: 0 auto; }
-  .problem-grid { grid-template-columns: 1fr; }
-  .outcome-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 110px 0 60px; }
+  .topbar-links { display: none; }
+  .kill-excel-grid { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: 1fr; }
+  .analytics-showcase { grid-template-columns: 1fr; }
+  .mock-stats-row { grid-template-columns: repeat(2, 1fr); }
   .features-grid { grid-template-columns: 1fr; }
-  .feature-card.highlight { grid-column: auto; }
-  .who-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 16px; }
-  .comp-header, .comp-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; font-size: 11px; padding: 12px 12px; }
-  .offer-card { padding: 32px 24px; }
-  .screenshot-secondary {
-    position: relative;
-    bottom: -12px; right: 0;
-    width: 75%;
-    margin-left: auto;
-    margin-top: -40px;
-  }
+  .use-case-grid { grid-template-columns: 1fr; }
+  .comp-header, .comp-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; font-size: 11px; padding: 10px 12px; }
+  .offer-card { padding: 28px 20px; }
+  .hero-screenshot .secondary { display: none; }
+  .proof-bar-inner { gap: 20px; }
 }
 
 /* ——— SCROLL REVEAL ——— */
 [data-reveal] {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 [data-reveal].visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- ——— TOP BAR ——— -->
+<!-- TOP BAR -->
 <nav class="topbar">
   <a href="https://get.enduresquad.com" class="topbar-logo">
     <div class="logo-mark">ES</div>
     Endure Squad Coach
   </a>
-  <a href="https://app.enduresquad.com/signup" class="topbar-cta">
-    Start Free Trial →
-  </a>
+  <div class="topbar-links">
+    <a href="#how" class="topbar-link">How It Works</a>
+    <a href="#analytics" class="topbar-link">Analytics</a>
+    <a href="#pricing" class="topbar-link">Pricing</a>
+    <a href="https://app.enduresquad.com/signup" class="topbar-cta">Build Your First Plan →</a>
+  </div>
 </nav>
 
-<!-- ——— HERO ——— -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge animate-up">
-          <span class="dot"></span>
-          30-day free trial — no credit card
-        </div>
-        <h1 class="animate-up delay-1">
-          Manage more clients.
-          <span class="line-accent">Work fewer hours.</span>
-        </h1>
-        <p class="hero-sub animate-up delay-2">
-          You didn't start coaching to spend half your day on spreadsheets, WhatsApp, and chasing check-ins. Endure Squad Coach handles the admin so you can handle the coaching.
-        </p>
-        <div class="hero-actions animate-up delay-3">
-          <a href="https://app.enduresquad.com/signup" class="btn-primary">
-            Start Free Trial
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#analytics" class="btn-secondary">See the Analytics</a>
-        </div>
+    <div class="hero-center">
+      <div class="hero-label animate-up">
+        Training Plan Software for Coaches <span class="pipe">|</span> Free for 30 Days
       </div>
-      <div class="hero-visual animate-in delay-4">
-        <div class="screenshot-stack">
-          <img src="./screenshots/dashboard.jpg" alt="Coach dashboard showing athlete alerts, weekly completion rates, and client overview" class="screenshot-main" loading="lazy">
-          <img src="./screenshots/plan-builder.jpg" alt="Drag-and-drop plan builder with exercises, sets, reps, and rest times" class="screenshot-secondary" loading="lazy">
-        </div>
+      <h1 class="animate-up delay-1">
+        Build training plans.<br>Track client progress.<br>Stop using spreadsheets.
+      </h1>
+      <p class="hero-sub animate-up delay-2">
+        Endure Squad Coach is the <strong>client management platform</strong> that replaces your Google Sheets, WhatsApp groups, and manual follow-ups — so you can coach more clients in less time.
+      </p>
+      <div class="hero-actions animate-up delay-3">
+        <a href="https://app.enduresquad.com/signup" class="btn-primary">
+          Build Your First Plan Free
+          <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how" class="btn-ghost">See How It Works</a>
       </div>
+      <div class="hero-note animate-up delay-4">No credit card · 5 min setup · Works on any device</div>
+    </div>
+    <div class="hero-screenshot animate-in delay-4">
+      <img src="./screenshots/dashboard.jpg" alt="Coach dashboard showing client alerts, completion tracking, and weekly overview" loading="lazy">
+      <img src="./screenshots/plan-builder.jpg" alt="Training plan builder with exercises, sets, reps, and rest periods" class="secondary" loading="lazy">
     </div>
   </div>
 </section>
 
-<!-- ——— THE PROBLEM ——— -->
-<section class="problem" data-reveal>
+<!-- PROOF BAR -->
+<section class="proof-bar" data-reveal>
   <div class="container">
-    <div class="section-label">The Real Problem</div>
-    <div class="section-title">You're spending more time on admin<br>than actual coaching.</div>
-    <div class="section-desc">Most independent coaches lose 10–15 hours a week to tasks that don't generate revenue or improve client outcomes.</div>
-    <div class="problem-grid">
-      <div class="problem-card" data-reveal>
-        <h3>Building plans in spreadsheets</h3>
-        <p>Copy-pasting workouts into Google Sheets, formatting cells, screenshotting into WhatsApp. For every single client. Every single week.</p>
-        <div class="time-cost">⏱ ~3 hrs/week lost</div>
-      </div>
-      <div class="problem-card" data-reveal>
-        <h3>Client communication is everywhere</h3>
-        <p>Check-ins on WhatsApp. Form checks in DMs. Progress photos in email. You can't find anything when you need it.</p>
-        <div class="time-cost">⏱ ~2 hrs/week lost</div>
-      </div>
-      <div class="problem-card" data-reveal>
-        <h3>No idea if clients are actually training</h3>
-        <p>You send the plan and hope for the best. No completion data. No progress tracking. You find out when they ghost you.</p>
-        <div class="time-cost">⏱ Clients lost silently</div>
-      </div>
-      <div class="problem-card" data-reveal>
-        <h3>Can't take on more clients</h3>
-        <p>You're capped at 10–15 clients because the admin doesn't scale. More clients = more chaos, not more income.</p>
-        <div class="time-cost">⏱ Revenue ceiling hit</div>
-      </div>
+    <div class="proof-bar-inner">
+      <div class="proof-item"><span class="check">✓</span> Multi-sport plans (Strength, Running, Cycling, Swimming, Mobility)</div>
+      <div class="proof-item"><span class="check">✓</span> Smart coaching insights</div>
+      <div class="proof-item"><span class="check">✓</span> Built-in messaging</div>
+      <div class="proof-item"><span class="check">✓</span> No app install for clients</div>
     </div>
   </div>
 </section>
 
-<!-- ——— OUTCOMES ——— -->
-<section class="outcomes" data-reveal>
+<!-- KILL EXCEL -->
+<section class="kill-excel" data-reveal>
   <div class="container">
-    <div class="outcome-grid">
-      <div class="outcome-card">
-        <div class="outcome-number">50<span class="accent">%</span></div>
-        <div class="outcome-label">less time on admin per week</div>
+    <div class="section-label">Still Using Spreadsheets?</div>
+    <div class="section-title">Here's what that's costing you every week.</div>
+    <div class="kill-excel-grid">
+      <div class="excel-problems">
+        <div class="excel-problem" data-reveal>
+          <div class="excel-x">✗</div>
+          <div>
+            <h4>3+ hours building plans manually</h4>
+            <p>Copy-pasting exercises into Google Sheets, formatting cells, screenshotting into WhatsApp. For every client. Every week.</p>
+          </div>
+        </div>
+        <div class="excel-problem" data-reveal>
+          <div class="excel-x">✗</div>
+          <div>
+            <h4>Zero visibility on client compliance</h4>
+            <p>You send the plan and hope they do it. No completion data. No volume tracking. You find out when they stop paying.</p>
+          </div>
+        </div>
+        <div class="excel-problem" data-reveal>
+          <div class="excel-x">✗</div>
+          <div>
+            <h4>Communication scattered across 4 apps</h4>
+            <p>Check-ins on WhatsApp. Form checks in Instagram DMs. Progress photos in email. Nothing searchable. Nothing organized.</p>
+          </div>
+        </div>
+        <div class="excel-problem" data-reveal>
+          <div class="excel-x">✗</div>
+          <div>
+            <h4>Capped at 10–15 clients</h4>
+            <p>The admin doesn't scale. Every new client adds more manual work. More clients = more chaos, not more income.</p>
+          </div>
+        </div>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-number">1<span class="accent">×</span></div>
-        <div class="outcome-label">platform for everything</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-number">5<span class="accent">min</span></div>
-        <div class="outcome-label">to set up and start</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-number">0<span class="accent">€</span></div>
-        <div class="outcome-label">to try for 30 days</div>
+      <div class="solution-list">
+        <div class="solution-item" data-reveal>
+          <div class="solution-check">✓</div>
+          <div>
+            <h4>Build plans in 5 minutes with drag-and-drop</h4>
+            <p>Multi-week plans with exercises, sets, reps, rest times. Duplicate across clients. Assign with one click.</p>
+          </div>
+        </div>
+        <div class="solution-item" data-reveal>
+          <div class="solution-check">✓</div>
+          <div>
+            <h4>Real-time completion tracking per client</h4>
+            <p>See who trained, who skipped, and who's plateauing — on a single dashboard. Automated alerts flag clients who need attention.</p>
+          </div>
+        </div>
+        <div class="solution-item" data-reveal>
+          <div class="solution-check">✓</div>
+          <div>
+            <h4>All messaging inside the platform</h4>
+            <p>Check-ins, form corrections, motivation — all attached to the right client. One search finds everything.</p>
+          </div>
+        </div>
+        <div class="solution-item" data-reveal>
+          <div class="solution-check">✓</div>
+          <div>
+            <h4>Scale to 30+ clients without extra admin</h4>
+            <p>Automated notifications, plan duplication, and smart insights do the repetitive work. You focus on coaching.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ——— ANALYTICS & SMART INSIGHTS (hero feature) ——— -->
+<!-- HOW IT WORKS -->
+<section class="how" id="how" data-reveal>
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">Three steps. Five minutes. You're coaching.</div>
+    <div class="flow-steps">
+      <div class="flow-step" data-reveal>
+        <div class="flow-step-num">01</div>
+        <h3>Create a Plan</h3>
+        <p>Use the drag-and-drop builder. Add exercises, set reps, load, rest times. Organize by training day. Duplicate plans for similar clients.</p>
+        <div class="flow-result">→ Done in 5 minutes</div>
+      </div>
+      <div class="flow-step" data-reveal>
+        <div class="flow-step-num">02</div>
+        <h3>Assign to Clients</h3>
+        <p>Invite clients via email. They click a link, set a password, and see their plan on their own dashboard. No app download required.</p>
+        <div class="flow-result">→ Client onboarded in 60 seconds</div>
+      </div>
+      <div class="flow-step" data-reveal>
+        <div class="flow-step-num">03</div>
+        <h3>Track & Coach</h3>
+        <p>Clients log workouts. You see completion rates, volume trends, RPE data, and smart recommendations — all in real-time. Act on insights, not guesswork.</p>
+        <div class="flow-result">→ Zero manual follow-up needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS SHOWCASE -->
 <section class="analytics" id="analytics" data-reveal>
   <div class="container">
     <div class="analytics-header">
-      <div class="section-label">Your Unfair Advantage</div>
-      <div class="section-title">Know exactly which clients need you —<br>before they have to ask.</div>
-      <div class="section-desc">Real-time analytics and rule-based smart insights surface what matters. Plateau detection, overtraining alerts, consistency tracking — all automatic, per athlete, backed by data.</div>
+      <div class="section-label">Smart Coaching Insights</div>
+      <div class="section-title">The platform tells you which clients<br>need attention — automatically.</div>
+      <div class="section-desc">Plateau detection, overtraining alerts, progressive overload readiness, consistency tracking. All rule-based, per athlete, backed by their actual training data.</div>
     </div>
 
     <div class="analytics-showcase">
-      <!-- LEFT: Coach Dashboard + Alerts -->
       <div class="analytics-left">
-        <!-- Needs Attention Alerts -->
+        <!-- Alerts -->
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header">⚠ Needs Attention — Coach Dashboard</div>
           <div class="mock-ui-body">
-            <div class="mock-alerts">
-              <div class="mock-alert danger">
-                <div class="mock-alert-icon">⚡</div>
-                <div class="mock-alert-content">
-                  <div class="mock-alert-name">Peter M.</div>
-                  <div class="mock-alert-detail">High RPE (avg 9.3) — risk of overtraining</div>
-                </div>
-                <div class="mock-alert-badge">1 alert</div>
+            <div class="mock-alert danger">
+              <div class="mock-alert-content">
+                <div class="mock-alert-name">Peter M.</div>
+                <div class="mock-alert-detail">High RPE (avg 9.3) — risk of overtraining</div>
               </div>
-              <div class="mock-alert warning">
-                <div class="mock-alert-icon">⚡</div>
-                <div class="mock-alert-content">
-                  <div class="mock-alert-name">Sarah A.</div>
-                  <div class="mock-alert-detail">High RPE (avg 9.6) — needs program adjustment</div>
-                </div>
-                <div class="mock-alert-badge">1 alert</div>
-              </div>
+              <div class="mock-alert-badge">1 alert</div>
             </div>
-            <div style="margin-top:16px;font-size:13px;color:var(--body);line-height:1.6;">
-              You open your dashboard. Two athletes are flagged <strong style="color:var(--heading)">before you even check in</strong>. No spreadsheet does this.
+            <div class="mock-alert warning">
+              <div class="mock-alert-content">
+                <div class="mock-alert-name">Sarah A.</div>
+                <div class="mock-alert-detail">High RPE (avg 9.6) — needs program adjustment</div>
+              </div>
+              <div class="mock-alert-badge">1 alert</div>
+            </div>
+            <div style="margin-top:14px;font-size:13px;color:var(--body);">
+              You open your dashboard. Two clients are flagged <strong style="color:var(--heading)">before you even check in</strong>.
             </div>
           </div>
         </div>
 
-        <!-- Stat Cards -->
+        <!-- Stats -->
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header">Training Analytics — Ali R. (30 Days)</div>
           <div class="mock-ui-body">
@@ -912,12 +718,12 @@ body::before {
               <div class="mock-stat-card">
                 <div class="mock-stat-icon">⊕ <span class="mock-stat-trend up">+31%</span></div>
                 <div class="mock-stat-value">10.5k</div>
-                <div class="mock-stat-label">Total Volume (kg)</div>
+                <div class="mock-stat-label">Volume (kg)</div>
               </div>
               <div class="mock-stat-card">
                 <div class="mock-stat-icon">✓ <span class="mock-stat-trend up">+13%</span></div>
                 <div class="mock-stat-value">18</div>
-                <div class="mock-stat-label">Sets Completed</div>
+                <div class="mock-stat-label">Sets Done</div>
               </div>
               <div class="mock-stat-card">
                 <div class="mock-stat-icon">↕ <span class="mock-stat-trend down">-18%</span></div>
@@ -930,28 +736,20 @@ body::before {
                 <div class="mock-stat-label">Week Streak</div>
               </div>
             </div>
-
-            <!-- Volume chart -->
             <div class="mock-chart">
               <div class="mock-chart-label">Volume Over Time (kg)</div>
-              <svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 460 100" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="volGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.3"/>
+                  <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
                     <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
                   </linearGradient>
                 </defs>
-                <path d="M0,80 Q30,20 60,30 Q90,40 120,15 Q150,5 180,10 Q210,5 240,8 Q270,12 300,25 Q330,40 360,50 Q390,35 430,20 L460,30" fill="none" stroke="#3B82F6" stroke-width="2"/>
-                <path d="M0,80 Q30,20 60,30 Q90,40 120,15 Q150,5 180,10 Q210,5 240,8 Q270,12 300,25 Q330,40 360,50 Q390,35 430,20 L460,30 L460,120 L0,120Z" fill="url(#volGrad)"/>
-                <text x="0" y="115" font-size="9" fill="#6E7681" font-family="Outfit">14 Apr</text>
-                <text x="110" y="115" font-size="9" fill="#6E7681" font-family="Outfit">23 Apr</text>
-                <text x="230" y="115" font-size="9" fill="#6E7681" font-family="Outfit">30 Apr</text>
-                <text x="350" y="115" font-size="9" fill="#6E7681" font-family="Outfit">7 May</text>
+                <path d="M0,70 Q30,15 60,25 Q90,35 120,12 Q150,5 180,8 Q210,5 240,7 Q270,10 300,20 Q330,35 360,42 Q390,30 430,16 L460,24" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                <path d="M0,70 Q30,15 60,25 Q90,35 120,12 Q150,5 180,8 Q210,5 240,7 Q270,10 300,20 Q330,35 360,42 Q390,30 430,16 L460,24 L460,100 L0,100Z" fill="url(#vg)"/>
               </svg>
             </div>
-
-            <!-- Exercise Progress -->
-            <div style="margin-top:16px;">
+            <div style="margin-top:12px;">
               <div class="mock-chart-label">Exercise Progress</div>
               <div class="mock-exercise-row">
                 <div class="mock-exercise-icon">🏃</div>
@@ -965,7 +763,7 @@ body::before {
                 <div class="mock-exercise-icon">🏋️</div>
                 <div class="mock-exercise-info">
                   <div class="mock-exercise-name">Back Squat</div>
-                  <div class="mock-exercise-meta">4 sessions · Last: 60kg × 15</div>
+                  <div class="mock-exercise-meta">4 sessions · 60kg × 15</div>
                 </div>
                 <div class="mock-exercise-status plateau">→ Plateau</div>
               </div>
@@ -973,7 +771,7 @@ body::before {
                 <div class="mock-exercise-icon">🏋️</div>
                 <div class="mock-exercise-info">
                   <div class="mock-exercise-name">Goblet Squat</div>
-                  <div class="mock-exercise-meta">4 sessions · Last: 20kg × 3</div>
+                  <div class="mock-exercise-meta">4 sessions · 20kg × 3</div>
                 </div>
                 <div class="mock-exercise-status declining">↓ Declining</div>
               </div>
@@ -982,72 +780,56 @@ body::before {
         </div>
       </div>
 
-      <!-- RIGHT: Smart Recommendations -->
       <div class="analytics-right">
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header">🧠 Smart Recommendations — Auto-Generated</div>
           <div class="mock-ui-body">
             <div class="mock-rec rec-warning">
               <div class="mock-rec-exercise">Back Squat</div>
-              <div class="mock-rec-title">⚠ Plateau detected on Back Squat</div>
-              <div class="mock-rec-desc">Load has stayed around 60kg for 4+ weeks. Consider varying rep ranges, adding accessory work, or testing a new max.</div>
+              <div class="mock-rec-title">⚠ Plateau detected</div>
+              <div class="mock-rec-desc">Load stuck at 60kg for 4+ weeks. Vary rep ranges, add accessory work, or test a new max.</div>
               <div class="mock-rec-data">Apr 12: 60kg · Apr 19: 60kg · Apr 26: 60kg · May 3: 60kg</div>
             </div>
             <div class="mock-rec rec-info">
               <div class="mock-rec-exercise">All Exercises</div>
               <div class="mock-rec-title">ℹ Training may be too easy</div>
-              <div class="mock-rec-desc">Average RPE 4.2 — athlete is completing all prescribed work comfortably. Consider increasing load or volume.</div>
+              <div class="mock-rec-desc">Avg RPE 4.2 — completing all work comfortably. Increase load or volume.</div>
               <div class="mock-rec-data">May 5: RPE 4 · May 7: RPE 4 · May 10: RPE 5</div>
             </div>
             <div class="mock-rec rec-success">
               <div class="mock-rec-exercise">Back Squat</div>
               <div class="mock-rec-title">✅ Ready for progressive overload</div>
-              <div class="mock-rec-desc">Completed all prescribed sets and reps for 3 sessions in a row at 60kg. Consider increasing load by 2.5–5kg or adding 1–2 reps.</div>
+              <div class="mock-rec-desc">3 consecutive sessions at 60kg completed. Increase by 2.5–5kg or add 1–2 reps.</div>
               <div class="mock-rec-data">Apr 23: 60kg · Apr 30: 60kg · May 7: 60kg</div>
             </div>
             <div class="mock-rec rec-success">
               <div class="mock-rec-exercise">Overall</div>
-              <div class="mock-rec-title">✅ Great consistency!</div>
-              <div class="mock-rec-desc">Athlete has maintained training for 6+ consecutive weeks. Acknowledge their dedication and consider progressive adjustments.</div>
-              <div class="mock-rec-data">Apr 19: 1 session · Apr 26: 3 · May 3: 3</div>
+              <div class="mock-rec-title">✅ Great consistency</div>
+              <div class="mock-rec-desc">6+ consecutive weeks of training. Acknowledge and consider progressive adjustments.</div>
+              <div class="mock-rec-data">Apr 19: 1 · Apr 26: 3 · May 3: 3</div>
             </div>
           </div>
         </div>
 
-        <!-- Activity Heatmap -->
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header">12-Week Activity</div>
           <div class="mock-ui-body">
             <div class="heatmap-grid">
-              <div class="heatmap-day-label">M</div>
-              <div class="heatmap-day-label">T</div>
-              <div class="heatmap-day-label">W</div>
-              <div class="heatmap-day-label">T</div>
-              <div class="heatmap-day-label">F</div>
-              <div class="heatmap-day-label">S</div>
-              <div class="heatmap-day-label">S</div>
-              <!-- Row 1 - empty -->
+              <div class="heatmap-day-label">M</div><div class="heatmap-day-label">T</div><div class="heatmap-day-label">W</div><div class="heatmap-day-label">T</div><div class="heatmap-day-label">F</div><div class="heatmap-day-label">S</div><div class="heatmap-day-label">S</div>
               <div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div>
-              <!-- Row 2 -->
               <div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell"></div><div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell"></div>
-              <!-- Row 3 -->
               <div class="heatmap-cell"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l1"></div>
-              <!-- Row 4 -->
               <div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div>
-              <!-- Row 5 -->
               <div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div>
-              <!-- Row 6 -->
               <div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l2"></div>
-              <!-- Row 7 -->
-              <div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell"></div><div class="heatmap-cell l1"></div><div class="heatmap-cell l1"></div>
             </div>
-            <div style="margin-top:10px;display:flex;align-items:center;justify-content:flex-end;gap:6px;">
-              <span style="font-size:10px;color:var(--muted);">Less</span>
-              <div style="width:12px;height:12px;background:var(--surface);border:1px solid var(--border);border-radius:2px;"></div>
-              <div style="width:12px;height:12px;background:rgba(59,130,246,0.15);border-radius:2px;"></div>
-              <div style="width:12px;height:12px;background:rgba(59,130,246,0.35);border-radius:2px;"></div>
-              <div style="width:12px;height:12px;background:rgba(59,130,246,0.6);border-radius:2px;"></div>
-              <span style="font-size:10px;color:var(--muted);">More</span>
+            <div style="margin-top:8px;display:flex;align-items:center;justify-content:flex-end;gap:5px;">
+              <span style="font-size:9px;color:var(--muted);">Less</span>
+              <div style="width:10px;height:10px;background:var(--surface);border:1px solid var(--border);border-radius:2px;"></div>
+              <div style="width:10px;height:10px;background:rgba(59,130,246,0.15);border-radius:2px;"></div>
+              <div style="width:10px;height:10px;background:rgba(59,130,246,0.35);border-radius:2px;"></div>
+              <div style="width:10px;height:10px;background:rgba(59,130,246,0.6);border-radius:2px;"></div>
+              <span style="font-size:9px;color:var(--muted);">More</span>
             </div>
           </div>
         </div>
@@ -1055,243 +837,182 @@ body::before {
     </div>
 
     <div class="analytics-cta" data-reveal>
-      <div class="analytics-caption"><strong>This isn't a reporting dashboard you check once a month.</strong> It's a coaching assistant that tells you what to do next — for every client, every week, automatically.</div>
+      <div class="analytics-caption"><strong>This isn't a dashboard you check once a month.</strong> It tells you what to do next — for every client, every week, automatically.</div>
       <a href="https://app.enduresquad.com/signup" class="btn-primary">
-        Try It Free for 30 Days
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Build Your First Plan Free
+        <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ——— FEATURES (as business outcomes) ——— -->
-<section class="features" id="features" data-reveal>
+<!-- FEATURES -->
+<section class="features" data-reveal>
   <div class="container">
-    <div class="section-label">What You Get</div>
-    <div class="section-title">Tools that save time and<br>keep clients longer.</div>
-    <div class="section-desc">Every feature is built to solve a real operational problem — not to look good in a feature list.</div>
+    <div class="section-label">Everything Included</div>
+    <div class="section-title">Every feature solves a real problem.</div>
     <div class="features-grid">
-      <div class="feature-card highlight" data-reveal>
-        <div class="feature-icon">🏗️</div>
+      <div class="feature-card" data-reveal>
+        <div class="f-icon">🏗️</div>
         <h3>Drag-and-Drop Plan Builder</h3>
-        <div class="feature-outcome">→ Cut plan creation time from 30 min to 5 min</div>
-        <p>Build multi-week training plans with drag-and-drop. Duplicate plans across clients, set date ranges, reorder exercises. Supports Strength, Running, Cycling, Swimming, Mobility, and interval workouts.</p>
-        <div class="feature-tag">Multi-Sport</div>
+        <p>Multi-week plans with exercises, sets, reps, load, rest. Reorder, duplicate, assign. 5 sports + interval workouts.</p>
+        <div class="feature-tag">Core</div>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">📈</div>
-        <h3>Client Progress Tracking</h3>
-        <div class="feature-outcome">→ Spot drop-off before clients ghost</div>
-        <p>Real-time completion rates, volume trends, and 8 smart coaching recommendations. Know exactly which clients need attention — before they disappear.</p>
+        <div class="f-icon">📈</div>
+        <h3>Training Analytics</h3>
+        <p>Volume trends, completion rates, RPE tracking, exercise progress. Per athlete, 7/30/90 day views.</p>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">💬</div>
-        <h3>Built-In Messaging</h3>
-        <div class="feature-outcome">→ All communication in one place</div>
-        <p>No more juggling WhatsApp, DMs, and email. Check-ins, form corrections, and motivation — all inside the platform, attached to the right client.</p>
-        <div class="feature-tag">✨ New</div>
+        <div class="f-icon">🧠</div>
+        <h3>Smart Recommendations</h3>
+        <p>8 rule-based insights: plateau detection, overtraining alerts, progressive overload readiness, consistency tracking.</p>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">👥</div>
-        <h3>One-Click Client Onboarding</h3>
-        <div class="feature-outcome">→ New clients set up in under 60 seconds</div>
-        <p>Send an email invite. Client clicks a link, sets a password, and lands on their own dashboard. No app store. No friction. No tech support calls.</p>
+        <div class="f-icon">💬</div>
+        <h3>In-App Messaging</h3>
+        <p>Direct messaging between coach and client. Everything in one place, attached to the right person.</p>
+        <div class="feature-tag">New</div>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">📩</div>
-        <h3>Automated Plan Notifications</h3>
-        <div class="feature-outcome">→ Stop manually following up every week</div>
-        <p>Clients get an email the moment you assign a new plan. They know when to train without you sending a single message.</p>
+        <div class="f-icon">📩</div>
+        <h3>Auto Notifications</h3>
+        <p>Clients get emailed when plans are assigned. No manual follow-up. They know when to train.</p>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">🎥</div>
-        <h3>Exercise Video Library</h3>
-        <div class="feature-outcome">→ Fewer "how do I do this?" messages</div>
-        <p>Embed YouTube demos per exercise. Shared library across all your clients. They watch the video, do the movement — no back-and-forth needed.</p>
+        <div class="f-icon">🎥</div>
+        <h3>Video Library</h3>
+        <p>Embed YouTube demos per exercise. Shared across all clients. Fewer "how do I do this?" messages.</p>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">⏱️</div>
-        <h3>Rest Timers with Audio</h3>
-        <div class="feature-outcome">→ Clients follow the plan as prescribed</div>
-        <p>Built-in interval timers with beeps and haptic vibration. Your clients train at the right intensity without needing a separate timer app.</p>
+        <div class="f-icon">⏱️</div>
+        <h3>Rest Timers</h3>
+        <p>Built-in interval timers with audio beeps and haptic vibration. Clients train at the right intensity.</p>
       </div>
       <div class="feature-card" data-reveal>
-        <div class="feature-icon">📝</div>
-        <h3>Session Notes & History</h3>
-        <div class="feature-outcome">→ Progressive overload happens automatically</div>
-        <p>Clients log notes per exercise. Previous session data auto-loads so they know exactly what to beat next time. You see their progression without asking.</p>
+        <div class="f-icon">📝</div>
+        <h3>Session History</h3>
+        <p>Previous session data auto-loads per exercise. Clients know what to beat. Progressive overload, built in.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="f-icon">👥</div>
+        <h3>One-Click Onboarding</h3>
+        <p>Email invite → client clicks link → sets password → sees their plan. No app store. 60 seconds.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ——— WHO IT'S FOR ——— -->
-<section class="who" data-reveal>
+<!-- USE CASES -->
+<section class="use-cases" data-reveal>
   <div class="container">
-    <div class="section-label">Who It's For</div>
-    <div class="section-title">Built for coaches who run a business,<br>not just write workouts.</div>
-    <div class="who-grid">
-      <div class="who-card" data-reveal>
-        <div class="who-icon">🏋️</div>
-        <h3>Independent Coaches</h3>
-        <p>Managing 5–30 clients on your own. You need structure, not another enterprise tool designed for gym chains.</p>
-        <div class="who-use">"I finally stopped screenshotting spreadsheets."</div>
+    <div class="section-label">Built For You</div>
+    <div class="section-title">Whether you coach 5 clients or 50.</div>
+    <div class="use-case-grid">
+      <div class="use-case-card" data-reveal>
+        <div class="uc-icon">🏋️</div>
+        <h3>Strength & Conditioning Coaches</h3>
+        <p>Program compound lifts, accessory work, and mobility. Track load progression per exercise across all clients.</p>
+        <ul class="uc-tasks">
+          <li><span class="li-check">✓</span> Set-based prescriptions with load/reps</li>
+          <li><span class="li-check">✓</span> Plateau detection per exercise</li>
+          <li><span class="li-check">✓</span> Progressive overload alerts</li>
+        </ul>
       </div>
-      <div class="who-card" data-reveal>
-        <div class="who-icon">🏃</div>
-        <h3>Endurance Coaches</h3>
-        <p>Programming across multiple sports — running, cycling, swimming, strength. You need a tool that handles all of them, not just lifting.</p>
-        <div class="who-use">"One platform for all my triathlon athletes."</div>
+      <div class="use-case-card" data-reveal>
+        <div class="uc-icon">🏃</div>
+        <h3>Endurance & Multi-Sport Coaches</h3>
+        <p>Plan running, cycling, swimming, and strength in the same program. Track volume across all disciplines.</p>
+        <ul class="uc-tasks">
+          <li><span class="li-check">✓</span> 5 sport types in one plan</li>
+          <li><span class="li-check">✓</span> Interval workout support</li>
+          <li><span class="li-check">✓</span> RPE and activity heatmaps</li>
+        </ul>
       </div>
-      <div class="who-card" data-reveal>
-        <div class="who-icon">📱</div>
-        <h3>Online Coaches</h3>
-        <p>Your clients are remote. They need a clean interface to follow plans, log progress, and message you — without downloading another app.</p>
-        <div class="who-use">"My clients just open a link. That's it."</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ——— HOW IT WORKS ——— -->
-<section class="how" id="how" data-reveal>
-  <div class="container">
-    <div class="section-label">Getting Started</div>
-    <div class="section-title">Set up your coaching platform in 5 minutes.</div>
-    <div class="section-desc">No onboarding call. No demo required. No credit card.</div>
-    <div class="steps">
-      <div class="step" data-reveal>
-        <div class="step-number">01</div>
-        <h3>Create Your Account</h3>
-        <p>Sign up with your email. Set up your coach profile — name, bio, specializations. Takes 60 seconds.</p>
-      </div>
-      <div class="step" data-reveal>
-        <div class="step-number">02</div>
-        <h3>Invite Your Clients</h3>
-        <p>Enter their email. They get a branded invite, set a password, and land on their dashboard. Zero friction for them.</p>
-      </div>
-      <div class="step" data-reveal>
-        <div class="step-number">03</div>
-        <h3>Build Plans & Coach</h3>
-        <p>Create training plans with the drag-and-drop builder. Assign to clients. They get notified. You track completion. Done.</p>
+      <div class="use-case-card" data-reveal>
+        <div class="uc-icon">📱</div>
+        <h3>Online & Remote Coaches</h3>
+        <p>Your clients open a browser link. No app download. Clean dashboard on any device. Built-in messaging replaces WhatsApp.</p>
+        <ul class="uc-tasks">
+          <li><span class="li-check">✓</span> Works on phone, tablet, desktop</li>
+          <li><span class="li-check">✓</span> No app install for clients</li>
+          <li><span class="li-check">✓</span> In-platform communication</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ——— COMPARISON ——— -->
+<!-- COMPARISON -->
 <section class="comparison" data-reveal>
   <div class="container">
-    <div class="section-label">Why Switch</div>
-    <div class="section-title">How it compares to what you're using now.</div>
+    <div class="section-label">Compare</div>
+    <div class="section-title">How Endure Squad Coach stacks up.</div>
     <div class="comparison-table">
       <div class="comp-header">
-        <div>What You Need</div>
+        <div>Capability</div>
         <div class="es-col">Endure Squad</div>
         <div>Spreadsheets</div>
         <div>TrueCoach etc.</div>
       </div>
-      <div class="comp-row">
-        <div class="feature-name">Drag-and-drop plan building</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-        <div class="comp-check">✓</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Client-facing dashboard</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-        <div class="comp-check">✓</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Multi-sport support</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-partial">Manual</div>
-        <div class="comp-partial">Limited</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Built-in messaging</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-        <div class="comp-check">✓</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Completion tracking</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-        <div class="comp-check">✓</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Smart coaching insights</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-        <div class="comp-partial">Basic</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">No app install for clients</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">✗</div>
-      </div>
-      <div class="comp-row">
-        <div class="feature-name">Free to start</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-check">✓</div>
-        <div class="comp-x">$19+/mo</div>
-      </div>
+      <div class="comp-row"><div class="feature-name">Drag-and-drop plan builder</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
+      <div class="comp-row"><div class="feature-name">Multi-sport support</div><div class="comp-check">✓</div><div class="comp-partial">Manual</div><div class="comp-partial">Limited</div></div>
+      <div class="comp-row"><div class="feature-name">Smart coaching recommendations</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-x">✗</div></div>
+      <div class="comp-row"><div class="feature-name">Plateau & overtraining detection</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-x">✗</div></div>
+      <div class="comp-row"><div class="feature-name">Real-time completion tracking</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
+      <div class="comp-row"><div class="feature-name">Built-in messaging</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
+      <div class="comp-row"><div class="feature-name">No app install for clients</div><div class="comp-check">✓</div><div class="comp-check">✓</div><div class="comp-x">✗</div></div>
+      <div class="comp-row"><div class="feature-name">Free to start</div><div class="comp-check">✓</div><div class="comp-check">✓</div><div class="comp-x">$19+/mo</div></div>
     </div>
   </div>
 </section>
 
-<!-- ——— OFFER ——— -->
-<section class="offer" data-reveal>
+<!-- OFFER -->
+<section class="offer" id="pricing" data-reveal>
   <div class="container">
-    <div class="section-label">Early Access</div>
-    <div class="section-title" style="text-align:center;">Start free. Pay only when you're ready.</div>
-    <div class="section-desc" style="text-align:center;max-width:520px;margin:0 auto 48px;">
-      We're in open beta. Full access to every feature. Your feedback directly shapes the product roadmap.
+    <div class="section-title" style="text-align:center;">Start free. Upgrade when you're ready.</div>
+    <div class="section-desc" style="text-align:center;max-width:480px;margin:0 auto 40px;">
+      Full access to every feature during the beta. Your feedback shapes the roadmap.
     </div>
     <div class="offer-card">
-      <div class="offer-badge">🚀 Open Beta — Early Adopter Access</div>
+      <div class="offer-badge">🚀 Open Beta</div>
       <h3>Coach Plan</h3>
       <div class="price">Free</div>
-      <div class="price-note">30 days full access — no credit card required</div>
+      <div class="price-note">30 days full access · no credit card</div>
       <ul class="offer-perks">
-        <li><span class="perk-check">✓</span> Unlimited training plans & clients</li>
-        <li><span class="perk-check">✓</span> Multi-sport plan builder (5 sports + intervals)</li>
-        <li><span class="perk-check">✓</span> One-click client onboarding</li>
-        <li><span class="perk-check">✓</span> In-app messaging</li>
+        <li><span class="perk-check">✓</span> Unlimited plans & clients</li>
+        <li><span class="perk-check">✓</span> Multi-sport plan builder</li>
         <li><span class="perk-check">✓</span> Training analytics & smart insights</li>
-        <li><span class="perk-check">✓</span> Automated plan notifications</li>
+        <li><span class="perk-check">✓</span> In-app messaging</li>
+        <li><span class="perk-check">✓</span> Auto notifications</li>
         <li><span class="perk-check">✓</span> Exercise video library</li>
-        <li><span class="perk-check">✓</span> Direct input on feature roadmap</li>
+        <li><span class="perk-check">✓</span> Priority feature requests</li>
       </ul>
       <a href="https://app.enduresquad.com/signup" class="btn-primary" style="width:100%;justify-content:center;">
-        Start Your Free Trial
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Build Your First Plan Free
+        <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ——— FINAL CTA ——— -->
+<!-- FINAL CTA -->
 <section class="final-cta" data-reveal>
   <div class="container">
-    <h2>You have 10 hours a week<br>trapped in admin. Take them back.</h2>
-    <p>Set up in 5 minutes. Start coaching with less overhead today.</p>
-    <div class="hero-actions" style="justify-content:center;">
+    <h2>Your clients deserve better<br>than a screenshot of a spreadsheet.</h2>
+    <p>Set up in 5 minutes. Build your first plan. See why coaches are switching.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="https://app.enduresquad.com/signup" class="btn-primary">
-        Start Free Trial
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Build Your First Plan Free
+        <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="mailto:info@enduresquad.com" class="btn-secondary">
+      <a href="mailto:info@enduresquad.com" class="btn-ghost">
         Questions? Email Us
       </a>
     </div>
   </div>
 </section>
 
-<!-- ——— FOOTER ——— -->
 <footer class="footer">
   <div class="container">
     <p>© 2026 Endure Squad · <a href="https://enduresquad.com">enduresquad.com</a> · <a href="mailto:info@enduresquad.com">info@enduresquad.com</a></p>
@@ -1303,10 +1024,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const els = document.querySelectorAll('[data-reveal]');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => observer.observe(el));
