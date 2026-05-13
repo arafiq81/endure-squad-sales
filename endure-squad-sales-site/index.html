@@ -198,43 +198,40 @@ body::before {
   max-width: 560px; margin-bottom: 40px; line-height: 1.65;
 }
 
-/* ——— KILL EXCEL SECTION ——— */
-.kill-excel { padding: 100px 0; }
-.kill-excel-grid {
+/* ——— BEFORE VS AFTER SECTION ——— */
+.before-after { padding: 100px 0; }
+.before-after-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: start;
+  gap: 28px; align-items: start;
 }
-.excel-problems { display: flex; flex-direction: column; gap: 16px; }
-.excel-problem {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 20px; background: var(--card);
-  border: 1px solid var(--border); border-radius: 8px;
-  transition: border-color 0.2s;
+.ba-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 28px 24px;
 }
-.excel-problem:hover { border-color: var(--border-hover); }
-.excel-x {
-  width: 28px; height: 28px; flex-shrink: 0;
-  background: rgba(239,68,68,0.1); border-radius: 6px;
+.ba-card.ba-before { border-top: 3px solid var(--error); }
+.ba-card.ba-after { border-top: 3px solid var(--success); }
+.ba-card-title {
+  font-size: 15px; font-weight: 700; color: var(--heading);
+  margin-bottom: 16px;
+}
+.ba-item {
+  display: flex; gap: 14px; padding: 14px 0;
+  border-bottom: 1px solid var(--border); align-items: flex-start;
+}
+.ba-item:last-child { border-bottom: none; }
+.ba-icon {
+  width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  color: var(--error); font-size: 14px; font-weight: 700;
+  font-size: 14px; font-weight: 700;
 }
-.excel-problem h4 { font-size: 15px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
-.excel-problem p { font-size: 13px; color: var(--body); line-height: 1.5; }
-
-.solution-list { display: flex; flex-direction: column; gap: 16px; }
-.solution-item {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 20px; background: var(--card);
-  border: 1px solid rgba(34,197,94,0.15); border-radius: 8px;
+.ba-before .ba-icon { background: rgba(239,68,68,0.1); color: var(--error); }
+.ba-after .ba-icon { background: rgba(34,197,94,0.1); color: var(--success); }
+.ba-item-title { font-size: 14px; font-weight: 600; color: var(--heading); }
+.ba-item-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.before-after-caption {
+  font-size: 15px; color: var(--heading); font-weight: 600;
+  text-align: center; margin-top: 32px;
 }
-.solution-check {
-  width: 28px; height: 28px; flex-shrink: 0;
-  background: rgba(34,197,94,0.1); border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--success); font-size: 14px; font-weight: 700;
-}
-.solution-item h4 { font-size: 15px; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
-.solution-item p { font-size: 13px; color: var(--body); line-height: 1.5; }
 
 /* ——— HOW IT WORKS (3-step flow) ——— */
 .how { padding: 100px 0; }
@@ -258,6 +255,25 @@ body::before {
   margin-top: 14px; font-size: 13px; font-weight: 500; color: var(--success);
   display: flex; align-items: center; gap: 6px;
 }
+
+/* ——— PRODUCT FLOW STRIP ——— */
+.product-flow-strip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-top: 48px; padding: 32px 0;
+  border-top: 1px solid var(--border);
+}
+.flow-visual-step { text-align: center; }
+.flow-visual-num {
+  font-size: 11px; font-weight: 600; color: var(--accent); margin-bottom: 8px;
+}
+.flow-visual-screen {
+  width: 72px; height: 72px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin: 0 auto 8px;
+}
+.flow-visual-label { font-size: 12px; color: var(--body); line-height: 1.4; }
+.flow-arrow { font-size: 20px; color: var(--muted); margin-top: 16px; }
 
 /* ——— ANALYTICS SHOWCASE ——— */
 .analytics { padding: 100px 0; position: relative; }
@@ -500,8 +516,10 @@ body::before {
 @media (max-width: 768px) {
   .hero { padding: 110px 0 60px; }
   .topbar-links { display: none; }
-  .kill-excel-grid { grid-template-columns: 1fr; }
+  .before-after-grid { grid-template-columns: 1fr; }
   .flow-steps { grid-template-columns: 1fr; }
+  .product-flow-strip { flex-wrap: wrap; gap: 12px; }
+  .flow-arrow { display: none; }
   .analytics-showcase { grid-template-columns: 1fr; }
   .mock-stats-row { grid-template-columns: repeat(2, 1fr); }
   .features-grid { grid-template-columns: 1fr; }
@@ -532,7 +550,7 @@ body::before {
     <a href="#how" class="topbar-link">How It Works</a>
     <a href="#analytics" class="topbar-link">Analytics</a>
     <a href="#pricing" class="topbar-link">Pricing</a>
-    <a href="https://app.enduresquad.com/signup" class="topbar-cta">Build Your First Plan →</a>
+    <a href="https://app.enduresquad.com/signup" class="topbar-cta">Try It Free →</a>
   </div>
 </nav>
 
@@ -541,22 +559,22 @@ body::before {
   <div class="container">
     <div class="hero-center">
       <div class="hero-label animate-up">
-        Training Plan Software for Coaches <span class="pipe">|</span> Free for 30 Days
+        Training Plan Software for Independent Coaches
       </div>
       <h1 class="animate-up delay-1">
-        Build training plans.<br>Track client progress.<br>Stop using spreadsheets.
+        Save 5+ hours a week.<br>Build plans in minutes — not spreadsheets.
       </h1>
       <p class="hero-sub animate-up delay-2">
-        Endure Squad Coach is the <strong>client management platform</strong> that replaces your Google Sheets, WhatsApp groups, and manual follow-ups — so you can coach more clients in less time.
+        Endure Squad Coach replaces your Google Sheets, WhatsApp groups, and manual follow-ups with a single platform — so you can take on more clients without more admin work.
       </p>
       <div class="hero-actions animate-up delay-3">
         <a href="https://app.enduresquad.com/signup" class="btn-primary">
-          Build Your First Plan Free
+          Build Your First Plan in 5 Minutes
           <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#how" class="btn-ghost">See How It Works</a>
+        <a href="#how" class="btn-ghost">Watch How It Works (2 min)</a>
       </div>
-      <div class="hero-note animate-up delay-4">No credit card · 5 min setup · Works on any device</div>
+      <div class="hero-note animate-up delay-4">No credit card · Free for 30 days · Works on any device</div>
     </div>
     <div class="hero-screenshot animate-in delay-4">
       <img src="./screenshots/dashboard.jpg" alt="Coach dashboard showing client alerts, completion tracking, and weekly overview" loading="lazy">
@@ -569,6 +587,8 @@ body::before {
 <section class="proof-bar" data-reveal>
   <div class="container">
     <div class="proof-bar-inner">
+      <div class="proof-item"><span class="check">✓</span> Built for coaches managing 10–50 clients</div>
+      <div class="proof-item"><span class="check">✓</span> Designed with real trainers</div>
       <div class="proof-item"><span class="check">✓</span> Multi-sport plans (Strength, Running, Cycling, Swimming, Mobility)</div>
       <div class="proof-item"><span class="check">✓</span> Smart coaching insights</div>
       <div class="proof-item"><span class="check">✓</span> Built-in messaging</div>
@@ -577,73 +597,60 @@ body::before {
   </div>
 </section>
 
-<!-- KILL EXCEL -->
-<section class="kill-excel" data-reveal>
+<!-- BEFORE VS AFTER -->
+<section class="before-after" data-reveal>
   <div class="container">
-    <div class="section-label">Still Using Spreadsheets?</div>
-    <div class="section-title">Here's what that's costing you every week.</div>
-    <div class="kill-excel-grid">
-      <div class="excel-problems">
-        <div class="excel-problem" data-reveal>
-          <div class="excel-x">✗</div>
-          <div>
-            <h4>3+ hours building plans manually</h4>
-            <p>Copy-pasting exercises into Google Sheets, formatting cells, screenshotting into WhatsApp. For every client. Every week.</p>
-          </div>
+    <div class="section-label">Before vs After</div>
+    <div class="section-title">This is what switching looks like.</div>
+    <div class="before-after-grid">
+      <div class="ba-card ba-before" data-reveal>
+        <div class="ba-card-title">Before Endure Squad</div>
+        <div class="ba-item">
+          <div class="ba-icon">✗</div>
+          <div><div class="ba-item-title">Copy-paste workouts into Google Sheets</div><div class="ba-item-sub">30 min per client, per week</div></div>
         </div>
-        <div class="excel-problem" data-reveal>
-          <div class="excel-x">✗</div>
-          <div>
-            <h4>Zero visibility on client compliance</h4>
-            <p>You send the plan and hope they do it. No completion data. No volume tracking. You find out when they stop paying.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✗</div>
+          <div><div class="ba-item-title">Screenshot plans into WhatsApp</div><div class="ba-item-sub">No version control, no tracking</div></div>
         </div>
-        <div class="excel-problem" data-reveal>
-          <div class="excel-x">✗</div>
-          <div>
-            <h4>Communication scattered across 4 apps</h4>
-            <p>Check-ins on WhatsApp. Form checks in Instagram DMs. Progress photos in email. Nothing searchable. Nothing organized.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✗</div>
+          <div><div class="ba-item-title">Ask clients manually if they trained</div><div class="ba-item-sub">Most don't reply</div></div>
         </div>
-        <div class="excel-problem" data-reveal>
-          <div class="excel-x">✗</div>
-          <div>
-            <h4>Capped at 10–15 clients</h4>
-            <p>The admin doesn't scale. Every new client adds more manual work. More clients = more chaos, not more income.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✗</div>
+          <div><div class="ba-item-title">Track progress in your head</div><div class="ba-item-sub">No data, no trends, no alerts</div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">✗</div>
+          <div><div class="ba-item-title">Cap out at 10–15 clients</div><div class="ba-item-sub">Admin grows faster than revenue</div></div>
         </div>
       </div>
-      <div class="solution-list">
-        <div class="solution-item" data-reveal>
-          <div class="solution-check">✓</div>
-          <div>
-            <h4>Build plans in 5 minutes with drag-and-drop</h4>
-            <p>Multi-week plans with exercises, sets, reps, rest times. Duplicate across clients. Assign with one click.</p>
-          </div>
+      <div class="ba-card ba-after" data-reveal>
+        <div class="ba-card-title">After Endure Squad</div>
+        <div class="ba-item">
+          <div class="ba-icon">✓</div>
+          <div><div class="ba-item-title">Drag-and-drop plan builder</div><div class="ba-item-sub">Build a full week in 5 minutes</div></div>
         </div>
-        <div class="solution-item" data-reveal>
-          <div class="solution-check">✓</div>
-          <div>
-            <h4>Real-time completion tracking per client</h4>
-            <p>See who trained, who skipped, and who's plateauing — on a single dashboard. Automated alerts flag clients who need attention.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✓</div>
+          <div><div class="ba-item-title">Clients see plans on their own dashboard</div><div class="ba-item-sub">Auto-notified when assigned</div></div>
         </div>
-        <div class="solution-item" data-reveal>
-          <div class="solution-check">✓</div>
-          <div>
-            <h4>All messaging inside the platform</h4>
-            <p>Check-ins, form corrections, motivation — all attached to the right client. One search finds everything.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✓</div>
+          <div><div class="ba-item-title">Real-time completion tracking</div><div class="ba-item-sub">See who trained and who didn't</div></div>
         </div>
-        <div class="solution-item" data-reveal>
-          <div class="solution-check">✓</div>
-          <div>
-            <h4>Scale to 30+ clients without extra admin</h4>
-            <p>Automated notifications, plan duplication, and smart insights do the repetitive work. You focus on coaching.</p>
-          </div>
+        <div class="ba-item">
+          <div class="ba-icon">✓</div>
+          <div><div class="ba-item-title">Smart alerts flag plateaus and overtraining</div><div class="ba-item-sub">Data-backed coaching decisions</div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-icon">✓</div>
+          <div><div class="ba-item-title">Scale to 30+ clients</div><div class="ba-item-sub">Same admin time as 5</div></div>
         </div>
       </div>
     </div>
+    <div class="before-after-caption">"The average coach saves 5+ hours per week after switching."</div>
   </div>
 </section>
 
@@ -670,6 +677,31 @@ body::before {
         <h3>Track & Coach</h3>
         <p>Clients log workouts. You see completion rates, volume trends, RPE data, and smart recommendations — all in real-time. Act on insights, not guesswork.</p>
         <div class="flow-result">→ Zero manual follow-up needed</div>
+      </div>
+    </div>
+    <div class="product-flow-strip">
+      <div class="flow-visual-step">
+        <div class="flow-visual-num">1</div>
+        <div class="flow-visual-screen">📋</div>
+        <div class="flow-visual-label">You build<br>the plan</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-visual-step">
+        <div class="flow-visual-num">2</div>
+        <div class="flow-visual-screen">📩</div>
+        <div class="flow-visual-label">Client gets<br>notified</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-visual-step">
+        <div class="flow-visual-num">3</div>
+        <div class="flow-visual-screen">🏋️</div>
+        <div class="flow-visual-label">Client logs<br>workout</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-visual-step">
+        <div class="flow-visual-num">4</div>
+        <div class="flow-visual-screen">📊</div>
+        <div class="flow-visual-label">You see<br>results</div>
       </div>
     </div>
   </div>
@@ -839,7 +871,7 @@ body::before {
     <div class="analytics-cta" data-reveal>
       <div class="analytics-caption"><strong>This isn't a dashboard you check once a month.</strong> It tells you what to do next — for every client, every week, automatically.</div>
       <a href="https://app.enduresquad.com/signup" class="btn-primary">
-        Build Your First Plan Free
+        Build Your First Plan in 5 Minutes
         <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -989,7 +1021,7 @@ body::before {
         <li><span class="perk-check">✓</span> Priority feature requests</li>
       </ul>
       <a href="https://app.enduresquad.com/signup" class="btn-primary" style="width:100%;justify-content:center;">
-        Build Your First Plan Free
+        Build Your First Plan in 5 Minutes
         <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -999,11 +1031,11 @@ body::before {
 <!-- FINAL CTA -->
 <section class="final-cta" data-reveal>
   <div class="container">
-    <h2>Your clients deserve better<br>than a screenshot of a spreadsheet.</h2>
-    <p>Set up in 5 minutes. Build your first plan. See why coaches are switching.</p>
+    <h2>Still managing clients with spreadsheets?<br>There's a faster way.</h2>
+    <p>Build your first plan in 5 minutes. Free for 30 days. No credit card.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="https://app.enduresquad.com/signup" class="btn-primary">
-        Build Your First Plan Free
+        Build Your First Plan in 5 Minutes
         <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a href="mailto:info@enduresquad.com" class="btn-ghost">
