@@ -526,11 +526,6 @@ body::before {
   .topbar-links { display: none; }
   .before-after-grid { grid-template-columns: 1fr; }
   .flow-steps { grid-template-columns: 1fr; }
-  .product-flow-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
   .flow-arrow { display: none; }
   .analytics-showcase { grid-template-columns: 1fr; }
   .mock-stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -548,12 +543,6 @@ body::before {
   .comp-row .feature-name { font-size: 12px; }
   .offer-card { padding: 28px 20px; }
   .hero-screenshot .secondary { display: none; }
-  .proof-bar-inner {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .proof-item { font-size: 13px; }
 }
 
 /* ——— SCROLL REVEAL ——— */
@@ -563,21 +552,21 @@ body::before {
 }
 [data-reveal].visible { opacity: 1; transform: translateY(0); }
 
-/* ——— MOBILE COLLAPSIBLE SECTIONS ——— */
-.mobile-collapse-toggle {
-  display: none; /* hidden on desktop */
+/* ===== MOBILE COLLAPSIBLE SYSTEM ===== */
+.mobile-toggle {
+  display: none; /* hidden on desktop always */
 }
 
 @media (max-width: 768px) {
-  /* Toggle button styling */
-  .mobile-collapse-toggle {
+  /* --- Toggle button --- */
+  .mobile-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
     width: 100%;
     padding: 12px 0;
-    margin-top: 16px;
+    margin-top: 12px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 6px;
@@ -587,82 +576,105 @@ body::before {
     cursor: pointer;
     font-family: inherit;
     transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
   }
-  .mobile-collapse-toggle:hover {
-    border-color: var(--accent);
+  .mobile-toggle:active {
     background: var(--accent-soft);
   }
-  .mobile-collapse-toggle .toggle-arrow {
-    transition: transform 0.3s;
-    font-size: 12px;
-  }
-  .mobile-collapse-toggle.expanded .toggle-arrow {
-    transform: rotate(180deg);
-  }
 
-  /* Hidden content on mobile */
-  .mobile-collapsible {
+  /* --- Collapsible container --- */
+  .m-collapse {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
     opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
   }
-  .mobile-collapsible.expanded {
-    max-height: 3000px; /* large enough for any content */
+  .m-collapse.m-open {
+    max-height: 5000px;
     opacity: 1;
-    transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
   }
 
-  /* Features: show first 3, hide rest */
+  /* --- PROOF BAR: horizontal scroll instead of wrapping --- */
+  .proof-bar-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .proof-bar-inner::-webkit-scrollbar { display: none; }
+  .proof-item {
+    flex-shrink: 0;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* --- HOW IT WORKS: collapse steps 2 & 3 --- */
+  .flow-steps .flow-step:nth-child(n+2) {
+    display: none;
+  }
+  .flow-steps.m-show-all .flow-step:nth-child(n+2) {
+    display: block;
+  }
+
+  /* --- PRODUCT FLOW STRIP: hide on mobile --- */
+  .product-flow-strip {
+    display: none !important;
+  }
+
+  /* --- FEATURES: show 3, collapse 6 --- */
   .features-grid .feature-card:nth-child(n+4) {
     display: none;
   }
-  .features-grid.show-all .feature-card:nth-child(n+4) {
+  .features-grid.m-show-all .feature-card:nth-child(n+4) {
     display: block;
   }
 
-  /* Recommendations: show first 2, hide rest */
-  .mock-recs-collapsible .mock-rec:nth-child(n+3) {
-    display: none;
+  /* --- Reduce section padding on mobile --- */
+  .before-after,
+  .how,
+  .analytics,
+  .features,
+  .use-cases,
+  .comparison,
+  .offer,
+  .final-cta {
+    padding: 60px 0;
   }
-  .mock-recs-collapsible.show-all .mock-rec:nth-child(n+3) {
-    display: block;
+  .hero {
+    padding: 100px 0 50px;
   }
 
-  /* Use cases: accordion style */
+  /* --- Tighter spacing for mobile analytics --- */
+  .analytics-header {
+    margin-bottom: 32px;
+  }
+
+  /* --- Use case uc-details always visible when grid is revealed --- */
   .use-case-card .uc-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-  }
-  .use-case-card.uc-open .uc-details {
-    max-height: 500px;
+    max-height: none;
+    overflow: visible;
+    opacity: 1;
   }
   .use-case-card .uc-expand {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 8px;
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: inherit;
-  }
-  .use-case-card .uc-expand .toggle-arrow {
-    transition: transform 0.3s;
-    font-size: 10px;
-  }
-  .use-case-card.uc-open .uc-expand .toggle-arrow {
-    transform: rotate(180deg);
+    display: none;
   }
 }
 
-/* Desktop: ensure uc-details are always visible */
+/* Desktop safety: always show everything */
 @media (min-width: 769px) {
+  .m-collapse {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+  .mobile-toggle {
+    display: none !important;
+  }
+  .product-flow-strip {
+    display: flex !important;
+  }
   .use-case-card .uc-details {
     max-height: none !important;
   }
@@ -760,7 +772,8 @@ body::before {
           <div><div class="ba-item-title">Cap out at 10–15 clients</div><div class="ba-item-sub">Admin grows faster than revenue</div></div>
         </div>
       </div>
-      <div class="ba-card ba-after mobile-collapsible" id="afterCard" data-reveal>
+      <div class="m-collapse" id="mc-after">
+      <div class="ba-card ba-after" data-reveal>
         <div class="ba-card-title">After Endure Squad</div>
         <div class="ba-item">
           <div class="ba-icon">✓</div>
@@ -783,9 +796,10 @@ body::before {
           <div><div class="ba-item-title">Scale to 30+ clients</div><div class="ba-item-sub">Same admin time as 5</div></div>
         </div>
       </div>
+      </div>
     </div>
-    <button class="mobile-collapse-toggle" onclick="toggleCollapse('afterCard', this)">
-      See the solution <span class="toggle-arrow">▼</span>
+    <button class="mobile-toggle" onclick="mToggle('mc-after', this, 'See the solution', 'Hide solution')">
+      See the solution ▼
     </button>
     <div class="before-after-caption">"The average coach saves 5+ hours per week after switching."</div>
   </div>
@@ -816,6 +830,9 @@ body::before {
         <div class="flow-result">→ Zero manual follow-up needed</div>
       </div>
     </div>
+    <button class="mobile-toggle" onclick="mToggleClass('.flow-steps', 'm-show-all', this, 'See all 3 steps', 'Show less')" style="margin-top:16px;">
+      See all 3 steps ▼
+    </button>
     <div class="product-flow-strip">
       <div class="flow-visual-step">
         <div class="flow-visual-num">1</div>
@@ -913,6 +930,7 @@ body::before {
         </div>
 
         <!-- Stats -->
+        <div class="m-collapse" id="mc-analytics-detail">
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header">Training Analytics — Ali R. (30 Days)</div>
           <div class="mock-ui-body">
@@ -980,9 +998,11 @@ body::before {
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <div class="analytics-right">
+        <div class="m-collapse" id="mc-analytics-recs">
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;flex-shrink:0;"><line x1="6" y1="14.5" x2="10" y2="14.5"/><path d="M8 1.5A5 5 0 0 1 13 6.5c0 2-1.2 3.8-3 4.6V13a.5.5 0 0 1-.5.5h-3A.5.5 0 0 1 6 13v-1.9A5 5 0 0 1 3 6.5a5 5 0 0 1 5-5z"/></svg>Smart Recommendations — Auto-Generated</div>
           <div class="mock-ui-body mock-recs-collapsible">
@@ -1038,8 +1058,12 @@ body::before {
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
+    <button class="mobile-toggle" onclick="mToggleMulti(['mc-analytics-detail','mc-analytics-recs'], this, 'See full analytics breakdown', 'Show less')">
+      See full analytics breakdown ▼
+    </button>
 
     <div class="analytics-cta" data-reveal>
       <div class="analytics-caption"><strong>This isn't a dashboard you check once a month.</strong> It tells you what to do next — for every client, every week, automatically.</div>
@@ -1105,8 +1129,8 @@ body::before {
         <p>Email invite → client clicks link → sets password → sees their plan. No app store. 60 seconds.</p>
       </div>
     </div>
-    <button class="mobile-collapse-toggle" onclick="toggleFeatures(this)">
-      Show all 9 features <span class="toggle-arrow">▼</span>
+    <button class="mobile-toggle" onclick="mToggleClass('.features-grid', 'm-show-all', this, 'Show all 9 features', 'Show fewer')">
+      Show all 9 features ▼
     </button>
   </div>
 </section>
@@ -1116,6 +1140,7 @@ body::before {
   <div class="container">
     <div class="section-label">Built For You</div>
     <div class="section-title">Whether you coach 5 clients or 50.</div>
+    <div class="m-collapse" id="mc-usecases">
     <div class="use-case-grid">
       <div class="use-case-card" data-reveal>
         <div class="uc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6.5" y1="12" x2="17.5" y2="12"/><rect x="3" y="9.5" width="3.5" height="5" rx="1"/><rect x="1" y="10.5" width="2" height="3" rx="0.5"/><rect x="17.5" y="9.5" width="3.5" height="5" rx="1"/><rect x="21" y="10.5" width="2" height="3" rx="0.5"/></svg></div>
@@ -1163,6 +1188,10 @@ body::before {
         </div>
       </div>
     </div>
+    </div>
+    <button class="mobile-toggle" onclick="mToggle('mc-usecases', this, 'See who it\'s built for', 'Hide')">
+      See who it's built for ▼
+    </button>
   </div>
 </section>
 
@@ -1171,7 +1200,7 @@ body::before {
   <div class="container">
     <div class="section-label">Compare</div>
     <div class="section-title">How Endure Squad Coach stacks up.</div>
-    <div class="mobile-collapsible" id="compTable">
+    <div class="m-collapse" id="mc-compare">
     <div class="comparison-table">
       <div class="comp-header">
         <div>Capability</div>
@@ -1189,8 +1218,8 @@ body::before {
       <div class="comp-row"><div class="feature-name">Free to start</div><div class="comp-check">✓</div><div class="comp-check">✓</div><div class="comp-x">$19+/mo</div></div>
     </div>
     </div>
-    <button class="mobile-collapse-toggle" onclick="toggleCollapse('compTable', this)">
-      See how we compare <span class="toggle-arrow">▼</span>
+    <button class="mobile-toggle" onclick="mToggle('mc-compare', this, 'See comparison table', 'Hide comparison')">
+      See comparison table ▼
     </button>
   </div>
 </section>
@@ -1299,6 +1328,28 @@ function toggleUseCase(btn) {
   btn.innerHTML = isOpen
     ? 'Show less <span class="toggle-arrow">▲</span>'
     : 'Learn more <span class="toggle-arrow">▼</span>';
+}
+
+// Single element toggle
+function mToggle(id, btn, showText, hideText) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.toggle('m-open');
+  btn.innerHTML = isOpen ? hideText + ' &#9650;' : showText + ' &#9660;';
+}
+
+// Toggle a CSS class on a target selector
+function mToggleClass(selector, className, btn, showText, hideText) {
+  const el = document.querySelector(selector);
+  const isOpen = el.classList.toggle(className);
+  btn.innerHTML = isOpen ? hideText + ' &#9660;' : showText + ' &#9660;';
+}
+
+// Toggle multiple elements at once
+function mToggleMulti(ids, btn, showText, hideText) {
+  const els = ids.map(id => document.getElementById(id));
+  const isOpen = !els[0].classList.contains('m-open');
+  els.forEach(el => el.classList.toggle('m-open', isOpen));
+  btn.innerHTML = isOpen ? hideText + ' &#9650;' : showText + ' &#9660;';
 }
 </script>
 
