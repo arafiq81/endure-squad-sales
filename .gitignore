@@ -15,8 +15,11 @@
 # Node
 node_modules/
 
-# Source/upload staging
+# Source/upload staging (drop v4/, v4.zip etc. here when done)
 files/
 files.zip
 v3/
 v3.zip
+v4/
+v4.zip
+*.tar.gz
