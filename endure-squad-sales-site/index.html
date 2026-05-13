@@ -562,6 +562,114 @@ body::before {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+/* ——— MOBILE COLLAPSIBLE SECTIONS ——— */
+.mobile-collapse-toggle {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  /* Toggle button styling */
+  .mobile-collapse-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .mobile-collapse-toggle:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .mobile-collapse-toggle .toggle-arrow {
+    transition: transform 0.3s;
+    font-size: 12px;
+  }
+  .mobile-collapse-toggle.expanded .toggle-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Hidden content on mobile */
+  .mobile-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+  }
+  .mobile-collapsible.expanded {
+    max-height: 3000px; /* large enough for any content */
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+  }
+
+  /* Features: show first 3, hide rest */
+  .features-grid .feature-card:nth-child(n+4) {
+    display: none;
+  }
+  .features-grid.show-all .feature-card:nth-child(n+4) {
+    display: block;
+  }
+
+  /* Recommendations: show first 2, hide rest */
+  .mock-recs-collapsible .mock-rec:nth-child(n+3) {
+    display: none;
+  }
+  .mock-recs-collapsible.show-all .mock-rec:nth-child(n+3) {
+    display: block;
+  }
+
+  /* Use cases: accordion style */
+  .use-case-card .uc-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .use-case-card.uc-open .uc-details {
+    max-height: 500px;
+  }
+  .use-case-card .uc-expand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+  .use-case-card .uc-expand .toggle-arrow {
+    transition: transform 0.3s;
+    font-size: 10px;
+  }
+  .use-case-card.uc-open .uc-expand .toggle-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* Desktop: ensure uc-details are always visible */
+@media (min-width: 769px) {
+  .use-case-card .uc-details {
+    max-height: none !important;
+  }
+  .use-case-card .uc-expand {
+    display: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -652,7 +760,7 @@ body::before {
           <div><div class="ba-item-title">Cap out at 10–15 clients</div><div class="ba-item-sub">Admin grows faster than revenue</div></div>
         </div>
       </div>
-      <div class="ba-card ba-after" data-reveal>
+      <div class="ba-card ba-after mobile-collapsible" id="afterCard" data-reveal>
         <div class="ba-card-title">After Endure Squad</div>
         <div class="ba-item">
           <div class="ba-icon">✓</div>
@@ -676,6 +784,9 @@ body::before {
         </div>
       </div>
     </div>
+    <button class="mobile-collapse-toggle" onclick="toggleCollapse('afterCard', this)">
+      See the solution <span class="toggle-arrow">▼</span>
+    </button>
     <div class="before-after-caption">"The average coach saves 5+ hours per week after switching."</div>
   </div>
 </section>
@@ -874,7 +985,7 @@ body::before {
       <div class="analytics-right">
         <div class="mock-ui" data-reveal>
           <div class="mock-ui-header"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;flex-shrink:0;"><line x1="6" y1="14.5" x2="10" y2="14.5"/><path d="M8 1.5A5 5 0 0 1 13 6.5c0 2-1.2 3.8-3 4.6V13a.5.5 0 0 1-.5.5h-3A.5.5 0 0 1 6 13v-1.9A5 5 0 0 1 3 6.5a5 5 0 0 1 5-5z"/></svg>Smart Recommendations — Auto-Generated</div>
-          <div class="mock-ui-body">
+          <div class="mock-ui-body mock-recs-collapsible">
             <div class="mock-rec rec-warning">
               <div class="mock-rec-exercise">Back Squat</div>
               <div class="mock-rec-title"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#E87722" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;flex-shrink:0;"><path d="M7 1.5L1 12.5h12L7 1.5z"/><line x1="7" y1="6" x2="7" y2="9"/><circle cx="7" cy="11" r="0.6" fill="#E87722" stroke="none"/></svg>Plateau detected</div>
@@ -899,6 +1010,9 @@ body::before {
               <div class="mock-rec-desc">6+ consecutive weeks of training. Acknowledge and consider progressive adjustments.</div>
               <div class="mock-rec-data">Apr 19: 1 · Apr 26: 3 · May 3: 3</div>
             </div>
+            <button class="mobile-collapse-toggle" onclick="toggleRecs(this)" style="margin-top:12px;">
+              Show all recommendations <span class="toggle-arrow">▼</span>
+            </button>
           </div>
         </div>
 
@@ -991,6 +1105,9 @@ body::before {
         <p>Email invite → client clicks link → sets password → sees their plan. No app store. 60 seconds.</p>
       </div>
     </div>
+    <button class="mobile-collapse-toggle" onclick="toggleFeatures(this)">
+      Show all 9 features <span class="toggle-arrow">▼</span>
+    </button>
   </div>
 </section>
 
@@ -1003,32 +1120,47 @@ body::before {
       <div class="use-case-card" data-reveal>
         <div class="uc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6.5" y1="12" x2="17.5" y2="12"/><rect x="3" y="9.5" width="3.5" height="5" rx="1"/><rect x="1" y="10.5" width="2" height="3" rx="0.5"/><rect x="17.5" y="9.5" width="3.5" height="5" rx="1"/><rect x="21" y="10.5" width="2" height="3" rx="0.5"/></svg></div>
         <h3>Strength & Conditioning Coaches</h3>
-        <p>Program compound lifts, accessory work, and mobility. Track load progression per exercise across all clients.</p>
-        <ul class="uc-tasks">
-          <li><span class="li-check">✓</span> Set-based prescriptions with load/reps</li>
-          <li><span class="li-check">✓</span> Plateau detection per exercise</li>
-          <li><span class="li-check">✓</span> Progressive overload alerts</li>
-        </ul>
+        <button class="uc-expand" onclick="toggleUseCase(this)">
+          Learn more <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="uc-details">
+          <p>Program compound lifts, accessory work, and mobility. Track load progression per exercise across all clients.</p>
+          <ul class="uc-tasks">
+            <li><span class="li-check">✓</span> Set-based prescriptions with load/reps</li>
+            <li><span class="li-check">✓</span> Plateau detection per exercise</li>
+            <li><span class="li-check">✓</span> Progressive overload alerts</li>
+          </ul>
+        </div>
       </div>
       <div class="use-case-card" data-reveal>
         <div class="uc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4" r="2"/><path d="M12 7l-4 5-3 4"/><path d="M12 7l4 4-3 5"/><path d="M8 12l5-2"/></svg></div>
         <h3>Endurance & Multi-Sport Coaches</h3>
-        <p>Plan running, cycling, swimming, and strength in the same program. Track volume across all disciplines.</p>
-        <ul class="uc-tasks">
-          <li><span class="li-check">✓</span> 5 sport types in one plan</li>
-          <li><span class="li-check">✓</span> Interval workout support</li>
-          <li><span class="li-check">✓</span> RPE and activity heatmaps</li>
-        </ul>
+        <button class="uc-expand" onclick="toggleUseCase(this)">
+          Learn more <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="uc-details">
+          <p>Plan running, cycling, swimming, and strength in the same program. Track volume across all disciplines.</p>
+          <ul class="uc-tasks">
+            <li><span class="li-check">✓</span> 5 sport types in one plan</li>
+            <li><span class="li-check">✓</span> Interval workout support</li>
+            <li><span class="li-check">✓</span> RPE and activity heatmaps</li>
+          </ul>
+        </div>
       </div>
       <div class="use-case-card" data-reveal>
         <div class="uc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M9.5 11a4 4 0 0 1 5 0"/><path d="M7 8.5a7.5 7.5 0 0 1 10 0"/><circle cx="12" cy="13" r="1" fill="#3B82F6" stroke="none"/></svg></div>
         <h3>Online & Remote Coaches</h3>
-        <p>Your clients open a browser link. No app download. Clean dashboard on any device. Built-in messaging replaces WhatsApp.</p>
-        <ul class="uc-tasks">
-          <li><span class="li-check">✓</span> Works on phone, tablet, desktop</li>
-          <li><span class="li-check">✓</span> No app install for clients</li>
-          <li><span class="li-check">✓</span> In-platform communication</li>
-        </ul>
+        <button class="uc-expand" onclick="toggleUseCase(this)">
+          Learn more <span class="toggle-arrow">▼</span>
+        </button>
+        <div class="uc-details">
+          <p>Your clients open a browser link. No app download. Clean dashboard on any device. Built-in messaging replaces WhatsApp.</p>
+          <ul class="uc-tasks">
+            <li><span class="li-check">✓</span> Works on phone, tablet, desktop</li>
+            <li><span class="li-check">✓</span> No app install for clients</li>
+            <li><span class="li-check">✓</span> In-platform communication</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -1039,6 +1171,7 @@ body::before {
   <div class="container">
     <div class="section-label">Compare</div>
     <div class="section-title">How Endure Squad Coach stacks up.</div>
+    <div class="mobile-collapsible" id="compTable">
     <div class="comparison-table">
       <div class="comp-header">
         <div>Capability</div>
@@ -1055,6 +1188,10 @@ body::before {
       <div class="comp-row"><div class="feature-name">No app install for clients</div><div class="comp-check">✓</div><div class="comp-check">✓</div><div class="comp-x">✗</div></div>
       <div class="comp-row"><div class="feature-name">Free to start</div><div class="comp-check">✓</div><div class="comp-check">✓</div><div class="comp-x">$19+/mo</div></div>
     </div>
+    </div>
+    <button class="mobile-collapse-toggle" onclick="toggleCollapse('compTable', this)">
+      See how we compare <span class="toggle-arrow">▼</span>
+    </button>
   </div>
 </section>
 
@@ -1120,6 +1257,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => observer.observe(el));
 });
+</script>
+
+<script>
+// Generic collapse toggle
+function toggleCollapse(id, btn) {
+  const el = document.getElementById(id);
+  const isExpanded = el.classList.toggle('expanded');
+  btn.classList.toggle('expanded', isExpanded);
+  if (isExpanded) {
+    btn.childNodes[0].textContent = btn.dataset.collapseText || 'Show less ';
+  } else {
+    btn.childNodes[0].textContent = btn.dataset.expandText || btn.getAttribute('data-expand') || btn.textContent.replace('Show less', 'See').replace(' ▲', '');
+  }
+}
+
+// Features grid toggle
+function toggleFeatures(btn) {
+  const grid = document.querySelector('.features-grid');
+  const showing = grid.classList.toggle('show-all');
+  btn.classList.toggle('expanded', showing);
+  btn.innerHTML = showing
+    ? 'Show fewer features <span class="toggle-arrow">▲</span>'
+    : 'Show all 9 features <span class="toggle-arrow">▼</span>';
+}
+
+// Recommendations toggle
+function toggleRecs(btn) {
+  const container = document.querySelector('.mock-recs-collapsible');
+  const showing = container.classList.toggle('show-all');
+  btn.classList.toggle('expanded', showing);
+  btn.innerHTML = showing
+    ? 'Show fewer <span class="toggle-arrow">▲</span>'
+    : 'Show all recommendations <span class="toggle-arrow">▼</span>';
+}
+
+// Use case accordion
+function toggleUseCase(btn) {
+  const card = btn.closest('.use-case-card');
+  const isOpen = card.classList.toggle('uc-open');
+  btn.innerHTML = isOpen
+    ? 'Show less <span class="toggle-arrow">▲</span>'
+    : 'Learn more <span class="toggle-arrow">▼</span>';
+}
 </script>
 
 </body>
