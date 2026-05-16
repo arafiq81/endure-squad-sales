@@ -390,6 +390,141 @@ body::before {
 .analytics-caption { font-size: 15px; color: var(--body); margin-bottom: 20px; }
 .analytics-caption strong { color: var(--heading); font-weight: 600; }
 
+/* ===== ASSESSMENT SHOWCASE ===== */
+.assessment-showcase {
+  margin-top: 8px;
+}
+.assessment-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+  align-items: start;
+}
+.assessment-selectors {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.assessment-selector {
+  flex: 1;
+}
+.selector-label {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+}
+.selector-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--body);
+}
+.selector-pill.retest {
+  border-color: rgba(59,130,246,0.3);
+  color: var(--accent);
+}
+.radar-svg {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  margin: 0 auto;
+}
+.radar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--body);
+}
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.legend-dot.baseline { background: rgba(139,148,158,0.5); }
+.legend-dot.retest { background: #3B82F6; }
+
+/* Benchmark table */
+.assessment-table {
+  display: flex;
+  flex-direction: column;
+}
+.bench-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.8fr 1fr;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  gap: 8px;
+}
+.bench-row:last-child { border: none; }
+.bench-header {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding-bottom: 8px;
+}
+.bench-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--heading);
+}
+.bench-old {
+  font-size: 13px;
+  color: var(--body);
+}
+.bench-delta {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.bench-delta.up { color: var(--success); }
+.bench-delta.neutral { color: var(--success); opacity: 0.6; }
+.bench-delta.na { color: var(--muted); }
+.bench-new {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.assessment-caption {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--body);
+  text-align: center;
+  line-height: 1.6;
+}
+.assessment-caption strong {
+  color: var(--heading);
+}
+
+@media (max-width: 768px) {
+  .assessment-layout {
+    grid-template-columns: 1fr;
+  }
+  .assessment-selectors {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bench-row {
+    grid-template-columns: 1.2fr 0.8fr 0.7fr 0.8fr;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .bench-name { font-size: 12px; }
+  .bench-old, .bench-delta, .bench-new { font-size: 12px; }
+  .radar-svg { max-width: 220px; }
+}
+
 /* ——— FEATURES GRID ——— */
 .features { padding: 100px 0; }
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -1061,9 +1196,107 @@ body::before {
         </div>
       </div>
     </div>
-    <button class="mobile-toggle" onclick="mToggleMulti(['mc-analytics-detail','mc-analytics-recs'], this, 'See full analytics breakdown', 'Show less')">
+    <button class="mobile-toggle" onclick="mToggleMulti(['mc-analytics-detail','mc-analytics-recs','mc-analytics-assessment'], this, 'See full analytics breakdown', 'Show less')">
       See full analytics breakdown ▼
     </button>
+
+    <div class="m-collapse" id="mc-analytics-assessment">
+    <!-- Assessment Comparison — full width below the two-column analytics -->
+    <div class="assessment-showcase" data-reveal>
+      <div class="mock-ui" style="margin-top: 28px;">
+        <div class="mock-ui-header">📊 Assessment Comparison — Prove Results to Clients</div>
+        <div class="mock-ui-body">
+          <div class="assessment-layout">
+            <!-- Left: Radar chart mock -->
+            <div class="assessment-radar">
+              <div class="assessment-selectors">
+                <div class="assessment-selector">
+                  <span class="selector-label">Plan A (earlier)</span>
+                  <div class="selector-pill baseline">Assessment Week — Baseline — May 4</div>
+                </div>
+                <div class="assessment-selector">
+                  <span class="selector-label">Plan B (current)</span>
+                  <div class="selector-pill retest">Assessment Week — Re-test — May 18</div>
+                </div>
+              </div>
+              <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" class="radar-svg">
+                <!-- Grid lines -->
+                <polygon points="150,40 250,200 50,200" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <polygon points="150,70 220,190 80,190" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <polygon points="150,100 190,175 110,175" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <!-- Axis lines -->
+                <line x1="150" y1="40" x2="150" y2="200" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <line x1="150" y1="200" x2="250" y2="200" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <line x1="150" y1="200" x2="50" y2="200" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                <!-- Baseline (gray, smaller) -->
+                <polygon points="150,85 205,180 95,180" fill="rgba(139,148,158,0.1)" stroke="rgba(139,148,158,0.4)" stroke-width="1.5"/>
+                <!-- Re-test (blue, larger) -->
+                <polygon points="150,60 230,190 70,190" fill="rgba(59,130,246,0.15)" stroke="#3B82F6" stroke-width="2"/>
+                <!-- Axis labels -->
+                <text x="150" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#F0F6FC" font-family="Inter, sans-serif">Strength</text>
+                <text x="265" y="215" text-anchor="middle" font-size="12" font-weight="600" fill="#F0F6FC" font-family="Inter, sans-serif">Mobility</text>
+                <text x="35" y="215" text-anchor="middle" font-size="12" font-weight="600" fill="#F0F6FC" font-family="Inter, sans-serif">Speed</text>
+              </svg>
+              <div class="radar-legend">
+                <span class="legend-item"><span class="legend-dot baseline"></span> Baseline</span>
+                <span class="legend-item"><span class="legend-dot retest"></span> Re-test</span>
+              </div>
+            </div>
+
+            <!-- Right: Benchmark delta table -->
+            <div class="assessment-table">
+              <div class="bench-row bench-header">
+                <div class="bench-cell">Benchmark</div>
+                <div class="bench-cell">May 4</div>
+                <div class="bench-cell">Delta</div>
+                <div class="bench-cell">May 18</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">3-min Air Squat AMRAP</div>
+                <div class="bench-cell bench-old">55 reps</div>
+                <div class="bench-cell bench-delta up">↑ 7.0</div>
+                <div class="bench-cell bench-new">62 reps</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">30-sec All-Out Sprint</div>
+                <div class="bench-cell bench-old">0.2 km</div>
+                <div class="bench-cell bench-delta neutral">↑ 0.0</div>
+                <div class="bench-cell bench-new">0.2 km</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">45-min Endurance Run</div>
+                <div class="bench-cell bench-old">6:10/km</div>
+                <div class="bench-cell bench-delta na">N/A</div>
+                <div class="bench-cell bench-new">5:55/km</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">Max Plank Hold</div>
+                <div class="bench-cell bench-old">80 sec</div>
+                <div class="bench-cell bench-delta up">↑ 12.0</div>
+                <div class="bench-cell bench-new">92 sec</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">Max Push Ups</div>
+                <div class="bench-cell bench-old">28 reps</div>
+                <div class="bench-cell bench-delta up">↑ 6.0</div>
+                <div class="bench-cell bench-new">34 reps</div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-cell bench-name">Max Wall Sit Hold</div>
+                <div class="bench-cell bench-old">75 sec</div>
+                <div class="bench-cell bench-delta up">↑ 10.0</div>
+                <div class="bench-cell bench-new">85 sec</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="assessment-caption">
+            Show clients exactly how far they've come. <strong>Coaches who prove results keep clients longer.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 
     <div class="analytics-cta" data-reveal>
       <div class="analytics-caption"><strong>This isn't a dashboard you check once a month.</strong> It tells you what to do next — for every client, every week, automatically.</div>
@@ -1090,7 +1323,7 @@ body::before {
       <div class="feature-card" data-reveal>
         <div class="f-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 8,12 12,15 17,9 21,9"/><polyline points="17,9 21,9 21,13"/></svg></div>
         <h3>Training Analytics</h3>
-        <p>Volume trends, completion rates, RPE tracking, exercise progress. Per athlete, 7/30/90 day views.</p>
+        <p>Volume trends, completion rates, RPE tracking, exercise progress, and assessment comparisons. Per athlete, 7/30/90 day views.</p>
       </div>
       <div class="feature-card" data-reveal>
         <div class="f-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="21" x2="15" y2="21"/><path d="M12 3a6 6 0 0 1 6 6c0 2.5-1.4 4.7-3.5 5.7V18h-5v-3.3A6 6 0 0 1 6 9a6 6 0 0 1 6-6z"/></svg></div>
@@ -1211,6 +1444,12 @@ body::before {
       <div class="comp-row"><div class="feature-name">Drag-and-drop plan builder</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
       <div class="comp-row"><div class="feature-name">Multi-sport support</div><div class="comp-check">✓</div><div class="comp-partial">Manual</div><div class="comp-partial">Limited</div></div>
       <div class="comp-row"><div class="feature-name">Smart coaching recommendations</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-x">✗</div></div>
+      <div class="comp-row">
+        <div class="feature-name">Assessment &amp; benchmark tracking</div>
+        <div class="comp-check">✓</div>
+        <div class="comp-x">✗</div>
+        <div class="comp-x">✗</div>
+      </div>
       <div class="comp-row"><div class="feature-name">Plateau & overtraining detection</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-x">✗</div></div>
       <div class="comp-row"><div class="feature-name">Real-time completion tracking</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
       <div class="comp-row"><div class="feature-name">Built-in messaging</div><div class="comp-check">✓</div><div class="comp-x">✗</div><div class="comp-check">✓</div></div>
